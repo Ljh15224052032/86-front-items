@@ -83,7 +83,7 @@
             background: #fff;
             border: 1px solid #d4c5b0;
             padding: 12px;
-            cursor: pointer;
+            cursor: default;
             text-decoration: none;
             color: inherit;
             display: flex;
@@ -179,6 +179,10 @@
             transform: scale(1.05);
         }
 
+        .project-card:hover .view-btn {
+            transform: scale(1.05);
+        }
+
         footer {
             text-align: center;
             color: #5a4a3a;
@@ -265,19 +269,19 @@
 
         <main class="projects-grid">
             <!-- 项目卡片示例 -->
-            <a href="projects/01-parallax-scrolling/" class="project-card">
+            <div class="project-card" data-href="projects/01-parallax-scrolling/">
                 <span class="project-number">01</span>
                 <h2 class="project-title">视差滚动效果</h2>
                 <p class="project-tech">CSS3, JavaScript, 视差滚动</p>
                 <span class="project-status status-done">已完成</span>
-            </a>
+            </div>
 
-            <a href="projects/02-fullscreen-video/" class="project-card">
+            <div class="project-card" data-href="projects/02-fullscreen-video/">
                 <span class="project-number">02</span>
                 <h2 class="project-title">全屏视频背景</h2>
                 <p class="project-tech">HTML5 Video, CSS3</p>
                 <span class="project-status status-todo">待完成</span>
-            </a>
+            </div>
 
             <!-- 更多项目卡片... -->
         </main>
@@ -303,13 +307,16 @@
                     if (!card.querySelector('.view-btn')) {
                         const viewBtn = document.createElement('button');
                         viewBtn.className = 'view-btn';
-                        viewBtn.textContent = '点击查阅';
+                        viewBtn.textContent = '查阅';
 
-                        // 阻止按钮点击事件冒泡，避免重复跳转
+                        // 只有点击按钮时才跳转
                         viewBtn.addEventListener('click', function(e) {
                             e.preventDefault();
                             e.stopPropagation();
-                            window.location.href = card.getAttribute('href');
+                            const href = card.getAttribute('data-href');
+                            if (href) {
+                                window.location.href = href;
+                            }
                         });
 
                         card.appendChild(viewBtn);
