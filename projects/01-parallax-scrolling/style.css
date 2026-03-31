@@ -1,0 +1,97 @@
+/* ==========================================
+   项目01：Moon Light Parallax Effects - 样式表
+   ========================================== */
+
+/* ========== 1. 字体导入 ========== */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+
+/* ========== 2. 全局样式重置 ========== */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ========== 3. body 样式 ========== */
+body {
+  background: #0a2a43;        /* 深蓝色背景，模拟夜空 */
+  min-height: 1500px;         /* 最小高度，确保有足够滚动空间 */
+}
+
+/* ========== 4. section 容器样式 ========== */
+section {
+  position: relative;         /* 相对定位 */
+  width: 100%;                /* 宽度占满 */
+  height: 100vh;              /* 视口高度100%（全屏） */
+  overflow: hidden;           /* 隐藏溢出 */
+  display: flex;              /* Flexbox布局 */
+  justify-content: center;    /* 水平居中 */
+  align-items: center;        /* 垂直居中 */
+}
+
+/* ========== 5. 底部渐变遮罩层 ========== */
+/* 使用 :before 伪元素创建底部渐变效果 */
+/* 使图层与背景自然过渡，避免生硬边界 */
+section:before
+{
+    content: '';                              /* 伪元素必须有content */
+    position: absolute;                       /* 绝对定位 */
+    bottom: 0;                                /* 固定底部 */
+    width: 100%;                              /* 宽度占满 */
+    height: 100px;                            /* 高度100px */
+    background: linear-gradient(to top, #0a2a43, transparent);  /* 从下到上渐变 */
+    z-index: 10000;                           /* 确保遮罩层在最上层 */
+}
+
+/* ========== 6. 顶部深色遮罩层 ========== */
+/* 使用 ::after 伪元素创建整体深色遮罩 */
+/* 通过颜色混合模式增强夜空氛围效果 */
+section::after
+{
+    content: '';                              /* 伪元素必须有content */
+    position: absolute;                       /* 绝对定位 */
+    top: 0;                                   /* 固定顶部 */
+    left: 0;                                  /* 固定左侧 */
+    width: 100%;                              /* 宽度占满 */
+    height: 100%;                             /* 高度100% */
+    background: #0a2a43;                      /* 深蓝色背景，模拟夜空 */
+    z-index: 10000;                           /* 确保遮罩层在最上层 */
+    mix-blend-mode: color;                    /* 颜色混合模式，增强夜空效果 */
+                                              /* color模式：保留亮度和饱和度，使用背景色的色相 */
+}
+
+/* ========== 7. 图片图层公共样式 ========== */
+/* 为 section 内的所有图片设置统一样式 */
+section img
+{
+  position: absolute;      /* 绝对定位，图层重叠 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* 保持比例，裁剪多余 */
+  pointer-events: none;    /* 禁用鼠标事件 */
+}
+
+/* ========== 8. 文字样式 ========== */
+/* 标题文字的样式设置 */
+#text
+{
+  position: relative;       /* 相对定位，与其他图层配合 */
+  color: #ffffff;          /* 白色字体 */
+  font-size: 4em;         /* 字体大小，em单位相对于父元素字体 原视频是10em，我屏幕显示不好，进行了调整，如有字体大小问题，可以这里调节 */
+  z-index: 1;              /* 层级1，在遮罩层之下 */
+}
+#road
+{ 
+z-index: 2; 
+}
+/* ========== 9. 响应式设计（可选） ========== */
+/* 绝大部分没必要做这么细节，除非有特殊需求 */
+/*
+@media (max-width: 768px) {
+  #text {
+    font-size: 10vw;
+  }
+}
+*/

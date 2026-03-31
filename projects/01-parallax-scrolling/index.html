@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+    项目01：Moon Light Parallax Effects（月光视差滚动效果）
+    技术栈：HTML5 + CSS3 + Vanilla JavaScript
+    功能：通过监听滚动事件，控制不同图层以不同速度移动，创造3D深度感
+-->
+<html lang="zh-CN">
+
+<head>
+    <!-- 字符编码：UTF-8，支持中文字符 -->
+    <meta charset="UTF-8">
+
+    <!-- 视口设置：响应式布局，移动设备优化 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 页面标题 -->
+    <title>项目01：Moon Light Parallax Effects | Vanilla JavaScript</title>
+
+    <!-- 引入外部样式表 -->
+    <!-- rel: 定义文档与被链接资源的关系，stylesheet 表示样式表 -->
+    <!-- type: 指定MIME类型，text/css 表示CSS文件 -->
+    <!-- href: 样式文件的路径（相对路径） -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- 引入Google Fonts：Poppins字体家族 -->
+    <!-- 提供多种字重（300-900）供选择 -->
+    <!-- type的作用是指定引入的资源类型，这里指定为text/css，确保浏览器正确解析 -->
+</head>
+
+<body>
+    <!--
+        section: 视差效果的主容器
+        包含4层图片和1个文字标题，通过CSS和JavaScript控制各层位置
+    -->
+    <section>
+        <!-- 背景层：夜空背景 -->
+        <img src="assets/issue-1/bg.jpg" id="bg" alt="夜空背景">
+
+        <!-- 月亮层：使用混合模式创建发光效果 -->
+        <img src="assets/issue-1/moon.png" id="moon" alt="月亮">
+
+        <!-- 山脉层：中景，提供深度参考 -->
+        <img src="assets/issue-1/mountain.png" id="mountain" alt="山脉">
+
+        <!-- 道路层：前景，移动速度最慢 -->
+        <img src="assets/issue-1/road.png" id="road" alt="道路">
+
+        <!-- 文字层：标题，视差移动 -->
+        <h2 id="text">Moon Light</h2>
+    </section>
+
+    <!-- 引入JavaScript文件 -->
+    <!-- src: 脚本文件的路径（相对路径） -->
+    <!-- 注意：脚本会阻塞页面渲染，建议放在body底部 -->
+    <script src="script.js"></script>
+</body>
+
+</html>
