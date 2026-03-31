@@ -152,6 +152,33 @@
             border-color: #d4c5b0;
         }
 
+        /* 查阅按钮样式 */
+        .project-card {
+            position: relative;
+        }
+
+        .view-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: #8b4513;
+            color: #fff;
+            border: none;
+            padding: 4px 10px;
+            font-size: 0.6rem;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: all 0.2s;
+            font-family: Georgia, "Times New Roman", serif;
+            letter-spacing: 0.05em;
+        }
+
+        .view-btn:hover {
+            background: #6b3410;
+            transform: scale(1.05);
+        }
+
         footer {
             text-align: center;
             color: #5a4a3a;
@@ -271,6 +298,22 @@
                 const status = card.querySelector('.project-status');
                 if (status.classList.contains('status-done')) {
                     completed++;
+
+                    // 为已完成的卡片添加查阅按钮
+                    if (!card.querySelector('.view-btn')) {
+                        const viewBtn = document.createElement('button');
+                        viewBtn.className = 'view-btn';
+                        viewBtn.textContent = '点击查阅';
+
+                        // 阻止按钮点击事件冒泡，避免重复跳转
+                        viewBtn.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.location.href = card.getAttribute('href');
+                        });
+
+                        card.appendChild(viewBtn);
+                    }
                 }
             });
 
