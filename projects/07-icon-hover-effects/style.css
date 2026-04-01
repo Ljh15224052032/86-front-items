@@ -1,0 +1,64 @@
+/* ==============================
+   项目07：Icon Hover Effects
+   图标悬停效果
+   ============================== */
+
+/* 页面样式重置与背景 */
+body {
+    margin: 0;
+    padding: 0;
+    background: #ff003b; /* 红色背景 */
+}
+
+/* 图标容器：居中定位 */
+ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 列表项：圆形图标容器 */
+ul li {
+    list-style: none; /* 清除默认列表样式 */
+    float: left; /* 横向浮动排列 */
+    margin: 10px; /* 外边距10px */
+    width: 100px; /* 宽度100px */
+    height: 100px; /* 高度100px */
+    line-height: 100px; /* 行高100px，使图标垂直居中 */
+    text-align: center; /* 文本水平居中 */
+    background: #fff; /* 白色背景 */
+    border-radius: 50%; /* 圆形（宽高相等的50%圆角） */
+    font-size: 50px; /* 图标大小50px */
+    position: relative; /* 相对定位，为伪元素提供定位参考 */
+    transition: .5s ease-in-out; /* 整体过渡效果 */
+    color: #262626; /* 图标颜色：深灰色 */
+    z-index: 1; /* 图层层级 */
+}
+
+/* 伪元素：悬停动画的背景层（默认隐藏） */
+ul li:before {
+    content: ''; /* 空内容 */
+    width: 100%; /* 宽度100% */
+    height: 100%; /* 高度100% */
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
+    background: #ff003b; /* 红色背景（与页面背景相同） */
+    border-radius: 50%; /* 圆形 */
+    transform: scale(0); /* 初始缩放为0（隐藏） */
+    transition: .5s ease-in-out; /* 缩放过渡效果 */
+    z-index: -1; /* 置于图标下方 */
+}
+
+/* 悬停时：伪元素背景展开 */
+ul li:hover:before {
+    transform: scale(1); /* 缩放到1（完全显示） */
+}
+
+/* 悬停时：图标颜色变为白色 */
+ul li:hover {
+    color: #fff; /* 白色 */
+}
