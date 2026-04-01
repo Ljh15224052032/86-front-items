@@ -1,0 +1,91 @@
+/* ==============================
+   项目09：Split Image on Hover
+   悬停分裂图片效果
+   ============================== */
+
+/* 页面样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; /* 无衬线字体 */
+    background: #262626; /* 深灰色背景 */
+}
+
+/* 图片容器：居中定位 */
+.box {
+    position: absolute; /* 绝对定位 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 居中 */
+    width: 600px; /* 宽度600px */
+    height: 400px; /* 高度400px */
+    background: #000; /* 黑色背景 */
+    overflow: hidden; /* 隐藏溢出内容 */
+}
+
+/* 中间文字内容 */
+.about {
+    padding: 40px; /* 内边距40px */
+    color: #fff; /* 白色文字 */
+    text-align: center; /* 文本居中 */
+    position: absolute; /* 绝对定位 */
+    top: 50%;
+    transform: translateY(-50%); /* 垂直居中 */
+    z-index: 10; /* 确保文字在图片上方 */
+}
+
+/* 标题样式 */
+.about h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 30px; /* 字体大小30px */
+    text-transform: uppercase; /* 转换为大写 */
+}
+
+/* 图片层容器 */
+.figure {
+    width: 100%;
+    height: 100%;
+}
+
+/* 左半部分：显示图片的左半边 */
+.figure:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* 占据容器的一半宽度 */
+    height: 100%;
+    background: url(https://img.freepik.com/free-photo/photorealistic-hummingbird-outdoors-nature_23-2151474112.jpg?semt=ais_hybrid&w=740&q=80) no-repeat;
+    background-size: 1200px auto; /* 原始图片宽度740px的约1.62倍 */
+    background-position: 0 0; /* 显示原始图片的左半边 */
+    transform-origin: bottom; /* 旋转起点：底部 */
+    transition: .5s; /* 过渡动画 */
+    z-index: 1; /* 位于文字下方 */
+}
+
+/* 右半部分：显示图片的右半边 */
+.figure:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%; /* 占据容器的另一半宽度 */
+    height: 100%;
+    background: url(https://img.freepik.com/free-photo/photorealistic-hummingbird-outdoors-nature_23-2151474112.jpg?semt=ais_hybrid&w=740&q=80) no-repeat;
+    background-size: 1200px auto; /* 与左半边保持一致 */
+    background-position: -600px 0; /* 显示原始图片的右半边 */
+    transform-origin: top; /* 旋转起点：顶部 */
+    transition: .5s; /* 过渡动画 */
+    z-index: 1; /* 位于文字下方 */
+}
+
+/* 悬停时：左半部分旋转打开 */
+.box:hover .figure:before {
+    transform: rotateX(90deg) translateY(50%);
+}
+
+/* 悬停时：右半部分旋转打开 */
+.box:hover .figure:after {
+    transform: rotateX(90deg) translateY(-50%);
+}
