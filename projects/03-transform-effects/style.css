@@ -1,30 +1,44 @@
-* 
-{
+/* ==========================================
+   项目03：CSS3 Transform Effects on Scroll - 样式表
+   ========================================== */
+
+/* ========== 1. 全局样式重置 ========== */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;  /* 添加这个很重要 */
 }
-body 
-{
-   height: 200vh;
-   background: #111;
 
+/* ========== 2. body 样式 ========== */
+body {
+  height: 200vh;          /* 2倍视口高度，确保可滚动 */
+  background: #111;       /* 深色背景 */
+  overflow-x: hidden;     /* 隐藏横向滚动条 */
 }
-section 
-{
-  position: absolute;
+
+/* ========== 3. section 容器 ========== */
+section {
+  position: absolute;     /* 绝对定位 */
   width: 100%;
-  height: calc(100% - 200px);
-  background: #2abbff; 
+  height: calc(100% - 200px);  /* 视口高度减200px */
+  background: #2abbff;    /* 蓝色背景 */
+  top: 0;
+  left: 0;
 }
-section.curve 
-{
-  position: absolute;
-  bottom: -200px;
-  height: -200px;
+
+/* ========== 4. curve 元素 ========== */
+.curve {
+  position: absolute;     /* 绝对定位 */
+  bottom: -200px;         /* 向下偏移200px，制造波浪效果 */
   width: 100%;
+  height: 250px;          /* ✅ 正的高度值 */
+  left: 0;
 }
-section.curve img 
-{
-  width: 100%;
-  height: 100%;
-}   
+
+/* ========== 5. curve 图片 ========== */
+.curve img {
+  width: 100%;           /* 宽度100% */
+  height: 100%;          /* 高度100% */
+  object-fit: cover;     /* 保持比例，裁剪多余 */
+  display: block;        /* 移除图片底部间隙 */
+}
