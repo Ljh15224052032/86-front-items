@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+    项目02：全屏视频背景（Fullscreen Video Background）
+    技术栈：HTML5 + CSS3
+    功能：使用HTML5 Video标签创建全屏视频背景效果
+-->
+<html lang="zh-CN">
+
+<head>
+    <!-- 字符编码：UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- 视口设置：响应式布局 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 页面标题 -->
+    <title>项目02：Fullscreen Video Background | HTML5 Video</title>
+
+    <!-- 引入外部样式表 -->
+    <!-- href: 样式文件的路径（相对路径） -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <!--
+        视频背景层
+        使用HTML5 Video标签作为背景
+        autoplay: 自动播放
+        loop: 循环播放
+        muted: 静音（浏览器要求自动播放视频必须静音）
+        playsinline: 在iOS设备内联播放，不全屏
+    -->
+    <video id="video-bg" autoplay loop muted playsinline>
+        <!-- 视频源文件 -->
+        <!-- 可以添加多个source标签，浏览器会自动选择支持的格式 -->
+        <source src="assets/issue-2/video.mp4" type="video/mp4">
+        <source src="assets/issue-2/video.webm" type="video/webm">
+        <!-- 浏览器不支持video标签时显示的提示 -->
+        <p>您的浏览器不支持HTML5视频。</p>
+    </video>
+
+    <!--
+        内容层
+        叠加在视频背景之上的内容
+        使用z-index控制层级，确保在视频之上
+    -->
+    <div class="content">
+        <!-- 页面标题 -->
+        <h1>Fullscreen Video Background</h1>
+
+        <!-- 副标题/描述 -->
+        <p class="subtitle">使用HTML5 Video创建全屏视频背景效果</p>
+
+        <!-- 按钮或其他交互元素 -->
+        <a href="#" class="btn">了解更多</a>
+    </div>
+
+    <!-- 可选：JavaScript控制 -->
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>
