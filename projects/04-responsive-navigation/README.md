@@ -18,6 +18,8 @@
 
 ## 📌 踩坑记录
 待更新...
+目前待完善中...
+出现了点小错误
 
 ## 📚 参考资源
 - [MDN - CSS Position](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
