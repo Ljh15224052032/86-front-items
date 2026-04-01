@@ -140,11 +140,11 @@ ul li:nth-child(5) a:before {
     }
 }
 
-/* 手机屏幕（最大宽度 575px）
-   适用设备：iPhone、Android手机
+/* 手机屏幕（最大宽度 480px）
+   适用设备：小屏手机（iPhone SE、旧款Android）
    调整内容：隐藏文字，只显示图标，确保在小屏幕上也能完整显示
 */
-@media (max-width: 575px) {
+@media (max-width: 480px) {
     ul li a {
         width: 50px; /* 宽度缩小到50px */
         height: 50px; /* 高度缩小到50px */
@@ -155,5 +155,23 @@ ul li:nth-child(5) a:before {
     ul li a i {
         font-size: 20px; /* 图标保持20px，确保清晰可见 */
         margin-right: 0; /* 移除图标右边距，因为文字已隐藏 */
+    }
+}
+
+/* 中等手机屏幕（481px - 575px）
+   适用设备：大屏手机（iPhone 13/14、现代Android）
+   调整内容：保持显示文字，但进一步缩小尺寸
+*/
+@media (min-width: 481px) and (max-width: 575px) {
+    ul li a {
+        width: 80px; /* 宽度80px */
+        height: 50px; /* 高度50px */
+        line-height: 50px; /* 行高同步调整 */
+        font-size: 11px; /* 字体11px，小但可读 */
+    }
+
+    ul li a i {
+        font-size: 16px; /* 图标16px */
+        margin-right: 4px; /* 图标右边距4px */
     }
 }
