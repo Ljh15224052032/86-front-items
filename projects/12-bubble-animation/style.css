@@ -1,0 +1,158 @@
+/* ==============================
+   项目12：Bubble Background Animation
+   气泡背景动画
+   ============================== */
+
+/* 页面样式 */
+body {
+    margin: 0;
+    padding: 0;
+    background: #ff4f4f; /* 红色背景 */
+    width: 100%;
+    height: 100vh; /* 视口高度 */
+    overflow: hidden; /* 隐藏滚动条 */
+}
+
+/* 气泡容器 */
+.bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 气泡基础样式 */
+.bubbles li {
+    position: absolute;
+    list-style: none; /* 清除列表样式 */
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, .2); /* 半透明白色 */
+    animation: animate 25s linear infinite; /* 动画：25秒，线性速度，无限循环 */
+    bottom: -150px; /* 初始位置在视口底部下方 */
+}
+
+/* 气泡1：左侧25%，大尺寸80px */
+.bubbles li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s; /* 无延迟 */
+}
+
+/* 气泡2：左侧10%，小尺寸20px */
+.bubbles li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s; /* 延迟2秒 */
+}
+
+/* 气泡3：左侧70%，小尺寸20px */
+.bubbles li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s; /* 延迟4秒 */
+}
+
+/* 气泡4：左侧40%，中等尺寸60px，快速动画 */
+.bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s; /* 动画时长18秒 */
+}
+
+/* 气泡5：左侧65%，小尺寸20px */
+.bubbles li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+/* 气泡6：左侧75%，超大尺寸110px */
+.bubbles li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s; /* 延迟3秒 */
+}
+
+/* 气泡7：左侧35%，超大尺寸150px */
+.bubbles li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s; /* 延迟7秒 */
+}
+
+/* 气泡8：左侧50%，小尺寸25px，慢速动画 */
+.bubbles li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s; /* 延迟15秒 */
+    animation-duration: 45s; /* 动画时长45秒 */
+}
+
+/* 气泡9：左侧20%，超小尺寸15px，慢速动画 */
+.bubbles li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s; /* 动画时长35秒 */
+}
+
+/* 气泡10：左侧85%，超大尺寸150px */
+.bubbles li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+}
+
+/* 动画关键帧：从底部上升并旋转 */
+@keyframes animate {
+    0% {
+        /* 初始状态 */
+        transform: translateY(0) rotate(0deg); /* 无位移，无旋转 */
+        opacity: 1; /* 完全不透明 */
+        border-radius: 0; /* 方形 */
+    }
+    100% {
+        /* 结束状态 */
+        transform: translateY(-1000px) rotate(720deg); /* 向上移动1000px，旋转720度（2圈） */
+        opacity: 0; /* 完全透明 */
+        border-radius: 50%; /* 圆形 */
+    }
+}
+
+/* 说明文字框样式 */
+.info-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    z-index: 10; /* 置于顶层 */
+}
+
+.info-box h3 {
+    margin: 0 0 10px 0;
+    color: #ffcccc; /* 浅粉色 */
+}
+
+.info-box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
