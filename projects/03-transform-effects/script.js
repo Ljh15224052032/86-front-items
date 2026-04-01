@@ -16,11 +16,13 @@ var scroll = document.querySelector('.curve');
 
 window.addEventListener('scroll', function() {
     // 获取当前滚动位置
-    var value = 1 + window.scrollY / -500;
+    // value = 1 + window.scrollY / -500
+    // 分母500控制压缩速度，数值越小压缩越快
+
+    var value = 1 + window.scrollY / -250;  // 从500改为250，压缩速度加快1倍
 
     // 应用变换效果
     // scaleY(): 在Y轴方向缩放元素
-    // 滚动向下时，value从1逐渐变小，实现压缩效果
     scroll.style.transform = `scaleY(${value})`;
 });
 
@@ -29,21 +31,22 @@ window.addEventListener('scroll', function() {
 /**
  * 变换效果说明：
  *
- * value = 1 + window.scrollY / -500
+ * value = 1 + window.scrollY / -250
  *
- * 滚动位置计算：
+ * 滚动位置计算（分母250）：
  * - scrollY = 0 时：value = 1 + 0 = 1（原始大小）
- * - scrollY = 500 时：value = 1 + (-1) = 0（完全压缩）
- * - scrollY = 250 时：value = 1 + (-0.5) = 0.5（压缩到50%）
+ * - scrollY = 125 时：value = 1 + (-0.5) = 0.5（压缩到50%）
+ * - scrollY = 250 时：value = 1 + (-1) = 0（完全压缩）
  *
  * 效果：向下滚动时，curve元素在Y轴方向逐渐被压缩
  *
- * 为什么除以-500？
- * - 负号：使滚动向下时value变小
- * - 500：控制变换速度，数值越小变化越快
+ * 分母对速度的影响：
+ * - 分母500：滚动500px才完全压缩（慢速）
+ * - 分母250：滚动250px就完全压缩（中速）✅ 当前
+ * - 分母125：滚动125px就完全压缩（快速）
  *
  * 可以调整的参数：
- * - 500 → 改为其他数值，改变变换速度
+ * - 250 → 改为更小的数值，压缩更快
+ * - 250 → 改为更大的数值，压缩更慢
  * - scaleY → 改为 scaleX, rotate, translate 等
- * - transform 可以组合多个变换
  */
