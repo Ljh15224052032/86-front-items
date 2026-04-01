@@ -100,3 +100,60 @@ ul li:nth-child(4) a:before {
 ul li:nth-child(5) a:before {
     background: #e4405f;
 }
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏及以下（最大宽度 1199px）
+   适用设备：iPad、小尺寸笔记本
+   调整内容：略微缩小按钮尺寸以适应中等屏幕
+*/
+@media (max-width: 1199px) {
+    ul li a {
+        width: 120px; /* 宽度从150px缩小到120px */
+        height: 70px; /* 高度从80px缩小到70px */
+        line-height: 70px; /* 行高同步调整 */
+        font-size: 14px; /* 字体从16px缩小到14px */
+    }
+
+    ul li a i {
+        font-size: 18px; /* 图标从20px缩小到18px */
+    }
+}
+
+/* 平板竖屏及以下（最大宽度 767px）
+   适用设备：iPad竖屏、大屏手机
+   调整内容：进一步缩小按钮尺寸
+*/
+@media (max-width: 767px) {
+    ul li a {
+        width: 100px; /* 宽度缩小到100px */
+        height: 60px; /* 高度缩小到60px */
+        line-height: 60px; /* 行高同步调整 */
+        font-size: 13px; /* 字体缩小到13px */
+    }
+
+    ul li a i {
+        font-size: 16px; /* 图标缩小到16px */
+        margin-right: 6px; /* 图标右边距从8px缩小到6px */
+    }
+}
+
+/* 手机屏幕（最大宽度 575px）
+   适用设备：iPhone、Android手机
+   调整内容：隐藏文字，只显示图标，确保在小屏幕上也能完整显示
+*/
+@media (max-width: 575px) {
+    ul li a {
+        width: 50px; /* 宽度缩小到50px */
+        height: 50px; /* 高度缩小到50px */
+        line-height: 50px; /* 行高同步调整，图标垂直居中 */
+        font-size: 0; /* 字体大小设为0，隐藏文字 */
+    }
+
+    ul li a i {
+        font-size: 20px; /* 图标保持20px，确保清晰可见 */
+        margin-right: 0; /* 移除图标右边距，因为文字已隐藏 */
+    }
+}
