@@ -1,0 +1,114 @@
+/* ==============================
+   项目11：Login Form
+   登录表单
+   ============================== */
+
+/* 页面样式 */
+body {
+    margin: 0;
+    padding: 0;
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYNzkGN3F2EJcrg2FtX3kdbyjLDYXDwxPkETVjvsUSEkcuIbqRhSqtUnoK&s=10); /* 外部背景图片 */
+    background-size: cover; /* 背景图片覆盖整个页面 */
+    font-family: sans-serif; /* 无衬线字体 */
+}
+
+/* 页面标题 */
+.title {
+    text-align: center; /* 文本居中 */
+    padding: 50px 0 20px; /* 上50px，左右0，下20px */
+}
+
+.title h1 {
+    margin: 0;
+    padding: 0;
+    color: #262626; /* 深灰色文字 */
+    text-transform: uppercase; /* 转换为大写 */
+    font-size: 36px; /* 字体大小36px */
+}
+
+/* 表单容器 */
+.container {
+    width: 50%; /* 宽度占页面的50% */
+    height: 400px;
+    background: #fff; /* 白色背景 */
+    margin: 0 auto; /* 水平居中 */
+    border: 2px solid #fff; /* 白色边框 */
+    box-shadow: 0 15px 40px rgba(0,0,0,.5); /* 阴影效果 */
+}
+
+/* 左侧：图片区域 */
+.container .left {
+    float: left; /* 左浮动 */
+    width: 50%;
+    height: 400px;
+    background: url(https://pic.5tu.cn/uploads/allimg/2405/pic_5tu_big_6672913_663dc24d0f9b3-thumb-650.jpg); /* 外部图片 */
+    background-size: cover; /* 图片覆盖整个区域 */
+    box-sizing: border-box; /* 盒模型包含边框和内边距 */
+}
+
+/* 右侧：表单区域 */
+.container .right {
+    float: right; /* 右浮动 */
+    width: 50%;
+    height: 400px;
+    box-sizing: border-box;
+}
+
+/* 表单容器 */
+.formBox {
+    width: 100%;
+    padding: 80px 40px; /* 上下80px，左右40px */
+    box-sizing: border-box;
+    height: 400px;
+    background: #fff;
+}
+
+/* 表单标签文字 */
+.formBox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold; /* 粗体 */
+    color: #a6af13; /* 黄绿色 */
+}
+
+/* 输入框间距 */
+.formBox input {
+    margin-bottom: 20px;
+}
+
+/* 文本输入框和密码输入框 */
+.formBox input[type="text"],
+.formBox input[type="password"] {
+    border: none; /* 无边框 */
+    border-bottom: 2px solid #a6af13; /* 底部边框 */
+    outline: none; /* 移除聚焦时的轮廓 */
+    height: 40px;
+}
+
+/* 输入框聚焦时：边框颜色变深 */
+.formBox input[type="text"]:focus,
+.formBox input[type="password"]:focus {
+    border-bottom: 2px solid #262626; /* 深灰色边框 */
+}
+
+/* 提交按钮 */
+.formBox input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    color: #fff; /* 白色文字 */
+    background: #262626; /* 深灰色背景 */
+    cursor: pointer; /* 鼠标指针变为手型 */
+}
+
+/* 提交按钮悬停效果 */
+.formBox input[type="submit"]:hover {
+    background: #a6af13; /* 变为黄绿色 */
+}
+
+/* 链接样式 */
+.formBox a {
+    color: #262626; /* 深灰色 */
+    font-size: 12px;
+    font-weight: bold;
+}
