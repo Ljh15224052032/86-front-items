@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+    项目03：CSS3 Transform Effects on Scroll
+    技术栈：HTML5 + CSS3 + Vanilla JavaScript
+    功能：监听滚动事件，触发CSS3变换效果
+-->
+<html lang="zh-CN">
+
+<head>
+    <!-- 字符编码：UTF-8 -->
+    <meta charset="UTF-8">
+
+    <!-- 视口设置：响应式布局 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 页面标题 -->
+    <title>项目03：CSS3 Transform Effects on Scroll | Vanilla JavaScript</title>
+
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 固定导航栏 -->
+    <nav class="navbar">
+        <div class="logo">Transform Effects</div>
+        <ul class="nav-links">
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 第一部分：旋转效果 -->
+        <section id="section1" class="section">
+            <div class="container">
+                <h2>Rotate Effect</h2>
+                <div class="box rotate-box">
+                    <p>滚动查看旋转效果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二部分：缩放效果 -->
+        <section id="section2" class="section">
+            <div class="container">
+                <h2>Scale Effect</h2>
+                <div class="box scale-box">
+                    <p>滚动查看缩放效果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三部分：平移效果 -->
+        <section id="section3" class="section">
+            <div class="container">
+                <h2>Translate Effect</h2>
+                <div class="box translate-box">
+                    <p>滚动查看平移效果</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四部分：综合效果 -->
+        <section id="section4" class="section">
+            <div class="container">
+                <h2>Combined Effects</h2>
+                <div class="box combined-box">
+                    <p>滚动查看综合效果</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>CSS3 Transform Effects on Scroll &copy; 2026</p>
+    </footer>
+
+    <!-- JavaScript控制 -->
+    <script src="script.js"></script>
+</body>
+
+</html>
