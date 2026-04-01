@@ -20,11 +20,11 @@ body {
     display: flex; /* 弹性布局，让span横向排列 */
 }
 
-/* 单个加载条样式 */
+/* 单个加载条样式（桌面端默认尺寸） */
 .loader span {
-    width: 50px; /* 宽度 */
-    height: 300px; /* 高度 */
-    margin: 0 20px; /* 左右间距20px */
+    width: 38px; /* 宽度：38px */
+    height: 225px; /* 高度：225px */
+    margin: 0 15px; /* 左右间距：15px */
     background: #2196f3; /* 背景色与页面背景相同 */
     animation: animate 1.4s linear infinite; /* 应用动画：时长1.4秒，线性速度，无限循环 */
     border-radius: 8px; /* 圆角边框 */
@@ -45,7 +45,7 @@ body {
         /* 初始状态 */
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); /* 无阴影 */
         opacity: 0; /* 完全透明 */
-        transform: translateX(-50px) scale(1); /* 向左偏移50px，保持原始大小 */
+        transform: translateX(-38px) scale(1); /* 向左偏移38px，保持原始大小 */
     }
     50% {
         /* 中间状态 */
@@ -57,6 +57,86 @@ body {
         /* 结束状态 */
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); /* 无阴影 */
         opacity: 0; /* 完全透明 */
-        transform: translateX(50px) scale(1); /* 向右偏移50px，恢复原始大小 */
+        transform: translateX(38px) scale(1); /* 向右偏移38px，恢复原始大小 */
+    }
+}
+
+/* ==============================
+   响应式设计---我微调了下尺寸
+   ============================== */
+
+/* 平板横屏及以下（最大宽度 1199px）
+   适用设备：iPad、小尺寸笔记本
+   尺寸调整：略微缩小以适应中等屏幕
+*/
+@media (max-width: 1199px) {
+    .loader span {
+        width: 32px; /* 宽度：32px */
+        height: 190px; /* 高度：190px */
+        margin: 0 12px; /* 左右间距：12px */
+    }
+}
+
+/* 平板竖屏及以下（最大宽度 767px）
+   适用设备：iPad竖屏、大屏手机
+   尺寸调整：进一步缩小，适配小屏幕
+   动画调整：减小位移距离，避免移出屏幕
+*/
+@media (max-width: 767px) {
+    .loader span {
+        width: 25px; /* 宽度：25px */
+        height: 150px; /* 高度：150px */
+        margin: 0 10px; /* 左右间距：10px */
+    }
+
+    /* 重新定义动画关键帧，减小位移距离 */
+    @keyframes animate {
+        0% {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(-25px) scale(1); /* 位移：25px */
+        }
+        50% {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            transform: translateX(0px) scale(1.2);
+        }
+        100% {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(25px) scale(1); /* 位移：25px */
+        }
+    }
+}
+
+/* 手机屏幕（最大宽度 575px）
+   适用设备：iPhone、Android手机
+   尺寸调整：最小尺寸，确保在手机上也能完整显示
+   动画调整：进一步减小位移，适配小屏幕
+*/
+@media (max-width: 575px) {
+    .loader span {
+        width: 19px; /* 宽度：19px */
+        height: 115px; /* 高度：115px */
+        margin: 0 8px; /* 左右间距：8px */
+    }
+
+    /* 重新定义动画关键帧，使用最小位移距离 */
+    @keyframes animate {
+        0% {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(-19px) scale(1); /* 位移：19px */
+        }
+        50% {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            transform: translateX(0px) scale(1.2);
+        }
+        100% {
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateX(19px) scale(1); /* 位移：19px */
+        }
     }
 }
