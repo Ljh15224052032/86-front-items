@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+    项目04：Fullscreen Overlay Responsive Navigation Menu
+    技术栈：HTML5 + CSS3 + Vanilla JavaScript
+    功能：全屏覆盖的响应式导航菜单
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目04：Responsive Navigation Menu | HTML5 + CSS3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">Logo</div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- 全屏覆盖菜单 -->
+    <div class="overlay-menu">
+        <div class="close-btn">
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="menu-items">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <main class="content">
+        <h1>Fullscreen Overlay Navigation</h1>
+        <p>点击右上角菜单图标查看导航菜单</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
