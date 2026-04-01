@@ -1,0 +1,36 @@
+/* ==============================
+   项目08：Transparent Text Effects
+   透明文字效果
+   ============================== */
+
+/* 页面样式重置 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; /* 无衬线字体 */
+}
+
+/* 背景容器：全屏背景图片 */
+.box {
+    height: 100vh; /* 高度为视口高度 */
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQscAR3iMeGi-OVMjTsKOqxsZixDHRnnBBPz5xcdOrI6_9j2s5IEYu-ynYz&s=10');
+    background-size: cover; /* 背景图片覆盖整个容器 */
+    background-repeat: no-repeat; /* 不重复背景图片 */
+}
+
+/* 标题文字：透明效果 */
+h1 {
+    position: absolute; /* 绝对定位 */
+    top: 50%; /* 距离顶部50% */
+    transform: translateY(-50%); /* 向上平移自身高度的50%，实现垂直居中 */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* 文本水平居中 */
+    font-size: 10em; /* 字体大小10em（超大字体） */
+    color: #fff; /* 文字颜色白色 */
+    text-transform: uppercase; /* 文字转换为大写 */
+    text-shadow: 0 5px 10px rgba(0,0,0,1); /* 文字阴影：黑色，完全透明度 */
+    mix-blend-mode: overlay; /* 混合模式：叠加效果 */
+    box-shadow: 0 5px 10px rgba(0,0,0,1); /* 盒阴影 */
+    background: rgba(0,0,0,.5); /* 半透明黑色背景 */
+}
