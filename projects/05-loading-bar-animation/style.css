@@ -1,0 +1,62 @@
+/* ==============================
+   项目05：Loading Bar Animation
+   加载条波浪动画效果
+   ============================== */
+
+/* 页面背景与居中布局 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex; /* 弹性布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    min-height: 100vh; /* 最小高度为视口高度 */
+    background: #2196f3; /* 蓝色背景 */
+}
+
+/* 加载条容器 */
+.loader {
+    position: relative; /* 相对定位，为子元素提供定位参考 */
+    display: flex; /* 弹性布局，让span横向排列 */
+}
+
+/* 单个加载条样式 */
+.loader span {
+    width: 50px; /* 宽度 */
+    height: 300px; /* 高度 */
+    margin: 0 20px; /* 左右间距20px */
+    background: #2196f3; /* 背景色与页面背景相同 */
+    animation: animate 1.4s linear infinite; /* 应用动画：时长1.4秒，线性速度，无限循环 */
+    border-radius: 8px; /* 圆角边框 */
+}
+
+/* 为每个加载条设置不同的动画延迟，形成波浪效果 */
+.loader span:nth-child(1) { animation-delay: 0s; }
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+.loader span:nth-child(4) { animation-delay: 0.6s; }
+.loader span:nth-child(5) { animation-delay: 0.8s; }
+.loader span:nth-child(6) { animation-delay: 1.0s; }
+.loader span:nth-child(7) { animation-delay: 1.2s; }
+
+/* 动画关键帧（包含移动、缩放、透明度和阴影变化） */
+@keyframes animate {
+    0% {
+        /* 初始状态 */
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); /* 无阴影 */
+        opacity: 0; /* 完全透明 */
+        transform: translateX(-50px) scale(1); /* 向左偏移50px，保持原始大小 */
+    }
+    50% {
+        /* 中间状态 */
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* 强阴影，产生立体感 */
+        opacity: 1; /* 完全不透明 */
+        transform: translateX(0px) scale(1.2); /* 回到原位，放大到1.2倍 */
+    }
+    100% {
+        /* 结束状态 */
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.5); /* 无阴影 */
+        opacity: 0; /* 完全透明 */
+        transform: translateX(50px) scale(1); /* 向右偏移50px，恢复原始大小 */
+    }
+}
