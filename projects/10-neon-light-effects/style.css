@@ -1,0 +1,57 @@
+/* ==============================
+   项目10：Neon Light Text Effects
+   霓虹灯文字效果
+   ============================== */
+
+/* 页面样式 */
+body {
+    margin: 0;
+    padding: 0;
+    background: url(bg.jpg); /* 背景图片（需要在项目中提供） */
+    background-size: cover; /* 背景图片覆盖整个页面 */
+    font-family: 'Quicksand', sans-serif; /* 使用 Google Fonts 字体 */
+}
+
+/* 霓虹灯文字容器 */
+.neon {
+    position: absolute; /* 绝对定位 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 居中 */
+    margin: 0;
+    padding: 0 20px; /* 左右内边距20px */
+    font-size: 6em; /* 超大字体：6em */
+    color: #fff; /* 白色文字 */
+    /* 多层文字阴影，创建霓虹灯发光效果 */
+    text-shadow:
+        0 0 10px #ff0055,   /* 第1层：10px模糊，粉红色 */
+        0 0 20px #ff0055,   /* 第2层：20px模糊，粉红色 */
+        0 0 40px #ff0055,   /* 第3层：40px模糊，粉红色 */
+        0 0 80px #ff0055;   /* 第4层：80px模糊，粉红色 */
+}
+
+/* 伪元素：after - 模糊的霓虹灯管效果 */
+.neon:after {
+    content: attr(data-text); /* 读取 HTML 的 data-text 属性值 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    z-index: -1; /* 置于原文字下方 */
+    color: #ff0055; /* 粉红色 */
+    filter: blur(15px); /* 15px模糊，创建光晕效果 */
+}
+
+/* 伪元素：before - 背景光晕效果 */
+.neon:before {
+    content: ''; /* 空内容 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fe3a80; /* 浅粉红色背景 */
+    z-index: -2; /* 置于最底层 */
+    opacity: .5; /* 50%不透明度 */
+    filter: blur(40px); /* 40px模糊，创建柔和光晕 */
+}
