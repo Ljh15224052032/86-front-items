@@ -1,0 +1,102 @@
+/* ==============================
+   项目06：Social Media Navigation with Hover Effects
+   社交媒体导航栏悬停效果
+   ============================== */
+
+/* 1. 页面背景与边距重置 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #262626; /* 深灰色背景 */
+}
+
+/* 2. 导航栏容器：居中定位 + 弹性布局 */
+ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    display: flex; /* 横向排列 */
+}
+
+/* 3. 列表项：清除默认样式 */
+ul li {
+    list-style: none;
+}
+
+/* 4. 导航链接：按钮核心样式 */
+ul li a {
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff; /* 文字白色 */
+    font-family: sans-serif; /* 无衬线字体 */
+    text-decoration: none; /* 清除下划线 */
+    border: 1px solid #000; /* 黑色边框 */
+    border-right: none; /* 除最后一个按钮外，隐藏右边框 */
+    transition: .5s; /* 整体过渡 */
+}
+
+/* 5. 最后一个按钮：恢复右边框，保证导航条边框闭合 */
+ul li:last-child a {
+    border-right: 1px solid #000;
+}
+
+/* 6. 伪元素：hover 动效的背景层（默认隐藏） */
+ul li a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00; /* 默认红色（会被 nth-child 覆盖） */
+    overflow: hidden;
+    z-index: -1; /* 置于文字下方 */
+    transform: scaleX(0); /* 初始水平缩放为 0（隐藏） */
+    transform-origin: right; /* 缩放起点：右侧 */
+    transition: transform 0.5s ease-in-out; /* 平滑过渡 */
+}
+
+/* 7. hover 时伪元素动效：从右向左展开 */
+ul li a:hover:before {
+    transform: scaleX(1); /* 水平缩放为 1（完全显示） */
+    transform-origin: left; /* 缩放起点：左侧 */
+}
+
+/* 8. 图标样式 */
+ul li a i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* 9. 第一个按钮的伪元素背景色（Facebook 蓝） */
+ul li:nth-child(1) a:before {
+    background: #3b5999;
+}
+
+/* 10. 第二个按钮的伪元素背景色（Twitter 蓝） */
+ul li:nth-child(2) a:before {
+    background: #55acee;
+}
+
+/* 11. 第三个按钮的伪元素背景色（Google+ 红） */
+ul li:nth-child(3) a:before {
+    background: #dd4b39;
+}
+
+/* 12. 第四个按钮的伪元素背景色（LinkedIn 蓝） */
+ul li:nth-child(4) a:before {
+    background: #0077B5;
+}
+
+/* 13. 第五个按钮的伪元素背景色（Instagram 粉） */
+ul li:nth-child(5) a:before {
+    background: #e4405f;
+}
