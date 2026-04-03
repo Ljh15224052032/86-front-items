@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D模型展示页 - 工业设计作品集</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #000;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-        }
-
-        .intro {
-            color: #fff;
-            text-align: center;
-            font-size: 24px;
-        }
-    </style>
+    <title>工业设计作品集 - 3D模型展示</title>
+    <link rel="stylesheet" href="index-style.css">
 </head>
 <body>
-    <div class="intro">
-        3D模型展示页 - 工业设计作品集（开发中）
+    <div class="container">
+        <h1 class="title">工业设计作品集</h1>
+        <p class="subtitle">Industrial Design Portfolio</p>
+        <p class="description">
+            探索精美的工业设计作品，体验沉浸式的3D模型展示
+        </p>
+        <button class="enter-btn" onclick="goToShowcase()">
+            进入展示
+            <span class="arrow">→</span>
+        </button>
     </div>
+
+    <script>
+        function goToShowcase() {
+            // 显示加载动画页面
+            window.location.href = 'loading.html?dest=showcase.html';
+        }
+    </script>
 </body>
 </html>

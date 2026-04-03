@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灯具一 - 3D模型展示</title>
+    <link rel="stylesheet" href="showcase-style.css">
+</head>
+<body>
+    <!-- 返回首页按钮 -->
+    <button class="back-btn" onclick="goToIndex()" title="返回首页">
+        ← 返回首页
+    </button>
+
+    <div class="container">
+        <!-- 左侧：3D模型交互区 (60%) -->
+        <div class="model-section">
+            <div class="sketchfab-embed-wrapper">
+                <iframe
+                    title="灯具一"
+                    frameborder="0"
+                    allowfullscreen
+                    mozallowfullscreen="true"
+                    webkitallowfullscreen="true"
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking
+                    execution-while-out-of-viewport
+                    execution-while-not-rendered
+                    web-share
+                    src="https://sketchfab.com/models/aabc712bab754d9e88fdeb269d20f6af/embed">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- 右侧：作品信息区 (40%) -->
+        <div class="info-section">
+            <h1 class="work-title">灯具一</h1>
+            <p class="work-description">
+                这是一件精美的工业设计灯具作品，融合了现代美学与实用功能。
+                设计灵感来源于自然形态，通过简洁的线条展现光影之美。
+            </p>
+
+            <div class="work-details">
+                <h2>设计参数</h2>
+                <ul class="parameters">
+                    <li><strong>材质：</strong>铝合金 + 亚克力灯罩</li>
+                    <li><strong>尺寸：</strong>Φ300mm × H450mm</li>
+                    <li><strong>光源：</strong>LED 12W 暖光</li>
+                    <li><strong>工艺：</strong>CNC精密加工 + 阳极氧化</li>
+                </ul>
+            </div>
+
+            <div class="work-highlights">
+                <h2>设计亮点</h2>
+                <ul>
+                    <li>✨ 极简主义设计风格</li>
+                    <li>💡 高效节能LED光源</li>
+                    <li>🔧 模块化组装结构</li>
+                    <li>🎨 多种表面处理可选</li>
+                </ul>
+            </div>
+
+            <div class="work-author">
+                <p>设计师：<a href="https://sketchfab.com/AIKaid6" target="_blank">AIKaid6</a></p>
+                <p>平台：<a href="https://sketchfab.com" target="_blank">Sketchfab</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToIndex() {
+            // 显示加载动画页面
+            window.location.href = 'loading.html?dest=index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* ==============================
+   项目13：首页样式
+   黑色背景 + 大文字介绍
+   ============================== */
+
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面主体 */
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+    overflow: hidden; /* 防止滚动 */
+}
+
+/* 容器 */
+.container {
+    text-align: center;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in;
+}
+
+/* 主标题 */
+.title {
+    font-size: 72px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+}
+
+/* 副标题 */
+.subtitle {
+    font-size: 28px;
+    font-weight: 300;
+    color: #888;
+    margin-bottom: 40px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+/* 描述文字 */
+.description {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 60px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 进入按钮 */
+.enter-btn {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    padding: 18px 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 按钮悬停效果 */
+.enter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.enter-btn:active {
+    transform: translateY(0);
+}
+
+/* 箭头动画 */
+.arrow {
+    font-size: 28px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.enter-btn:hover .arrow {
+    transform: translateX(8px);
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏 (≤ 1199px) */
+@media (max-width: 1199px) {
+    .title {
+        font-size: 56px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 50px;
+    }
+
+    .enter-btn {
+        font-size: 20px;
+        padding: 15px 40px;
+    }
+}
+
+/* 平板竖屏 (≤ 768px) */
+@media (max-width: 768px) {
+    .title {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+
+    .description {
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+
+    .enter-btn {
+        font-size: 18px;
+        padding: 12px 35px;
+    }
+}
+
+/* 手机屏幕 (≤ 576px) */
+@media (max-width: 576px) {
+    .title {
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+    }
+
+    .description {
+        font-size: 13px;
+        margin-bottom: 30px;
+        padding: 0 20px;
+    }
+
+    .enter-btn {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+
+    .arrow {
+        font-size: 24px;
+    }
+}

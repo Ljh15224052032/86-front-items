@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加载中...</title>
+    <link rel="stylesheet" href="loading-style.css">
+</head>
+<body>
+    <!-- 加载条容器 -->
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <p class="loading-text">加载中...</p>
+
+    <script>
+        // 获取目标页面URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const destPage = urlParams.get('dest') || 'showcase.html';
+
+        // 2秒后跳转到目标页面
+        setTimeout(() => {
+            window.location.href = destPage;
+        }, 2000);
+    </script>
+</body>
+</html>

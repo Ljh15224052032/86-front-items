@@ -1,0 +1,126 @@
+/* ==============================
+   项目13：加载动画样式
+   使用项目05的加载条效果（黑色主题）
+   ============================== */
+
+/* 页面背景与居中布局 */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000; /* 黑色背景 */
+    font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+}
+
+/* 加载条容器 */
+.loader {
+    position: relative;
+    display: flex;
+}
+
+/* 单个加载条样式（桌面端默认尺寸） */
+.loader span {
+    width: 38px;
+    height: 225px;
+    margin: 0 15px;
+    background: #667eea; /* 渐变起始色 */
+    animation: animate 1.4s linear infinite;
+    border-radius: 8px;
+}
+
+/* 为每个加载条设置不同的动画延迟，形成波浪效果 */
+.loader span:nth-child(1) { animation-delay: 0s; }
+.loader span:nth-child(2) { animation-delay: 0.2s; }
+.loader span:nth-child(3) { animation-delay: 0.4s; }
+.loader span:nth-child(4) { animation-delay: 0.6s; }
+.loader span:nth-child(5) { animation-delay: 0.8s; }
+.loader span:nth-child(6) { animation-delay: 1.0s; }
+.loader span:nth-child(7) { animation-delay: 1.2s; }
+
+/* 动画关键帧 */
+@keyframes animate {
+    0% {
+        box-shadow: 0 0 0 rgba(102, 126, 234, 0.5);
+        opacity: 0;
+        transform: translateX(-38px) scale(1);
+    }
+    50% {
+        box-shadow: 0 20px 50px rgba(102, 126, 234, 0.8);
+        opacity: 1;
+        transform: translateX(0px) scale(1.2);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(102, 126, 234, 0.5);
+        opacity: 0;
+        transform: translateX(38px) scale(1);
+    }
+}
+
+/* 加载文字 */
+.loading-text {
+    margin-top: 60px;
+    color: #667eea;
+    font-size: 18px;
+    letter-spacing: 4px;
+    animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* 文字脉冲动画 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏 (≤ 1199px) */
+@media (max-width: 1199px) {
+    .loader span {
+        width: 32px;
+        height: 190px;
+        margin: 0 12px;
+    }
+
+    .loading-text {
+        font-size: 16px;
+        margin-top: 50px;
+    }
+}
+
+/* 平板竖屏 (≤ 767px) */
+@media (max-width: 767px) {
+    .loader span {
+        width: 25px;
+        height: 150px;
+        margin: 0 10px;
+    }
+
+    .loading-text {
+        font-size: 14px;
+        margin-top: 40px;
+    }
+}
+
+/* 手机屏幕 (≤ 480px) */
+@media (max-width: 480px) {
+    .loader span {
+        width: 19px;
+        height: 115px;
+        margin: 0 8px;
+    }
+
+    .loading-text {
+        font-size: 13px;
+        margin-top: 30px;
+    }
+}
