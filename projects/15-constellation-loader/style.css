@@ -1,0 +1,234 @@
+/* ==============================
+   项目15：Constellation Loading Animation
+   星座连线Loading动画
+   ============================== */
+
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面主体 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #070b1a; /* 深蓝色星空背景 */
+    overflow: hidden; /* 防止滚动条出现 */
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+}
+
+/* ========== Canvas画布 ========== */
+canvas {
+    display: block; /* 移除Canvas默认的inline间距 */
+}
+
+/* ========== 加载信息显示区域 ========== */
+.loading-info {
+    position: fixed; /* 固定定位 */
+    bottom: 10%; /* 距离底部10% */
+    left: 50%;
+    transform: translateX(-50%); /* 水平居中 */
+    text-align: center;
+    pointer-events: none; /* 让鼠标事件穿透，不影响Canvas交互 */
+}
+
+/* 星座中文名称 */
+.constellation-name-cn {
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    font-size: 28px;
+    color: rgba(200, 230, 255, 0.85);
+    letter-spacing: 12px; /* 字母间距 */
+    margin-bottom: 4px;
+    text-shadow: /* 文字发光效果 */
+        0 0 20px rgba(100, 180, 255, 0.4),
+        0 0 40px rgba(100, 180, 255, 0.15);
+    transition: opacity 0.5s; /* 淡入淡出过渡 */
+}
+
+/* 星座英文名称 */
+.constellation-name {
+    font-family: "Georgia", serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 6px;
+    margin-bottom: 6px;
+    transition: opacity 0.5s;
+}
+
+/* 星座描述 */
+.constellation-desc {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.28);
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+    min-height: 18px; /* 最小高度，防止文字变化时高度跳动 */
+    transition: opacity 0.5s;
+}
+
+/* ========== Loading指示器 ========== */
+.loading-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px; /* 元素间距 */
+}
+
+/* Loading文字 */
+.loading-text {
+    font-family: "Georgia", serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 4px;
+    animation: fadeInOut 2.5s ease-in-out infinite; /* 呼吸闪烁动画 */
+}
+
+/* 淡入淡出动画 */
+@keyframes fadeInOut {
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Loading点点容器 */
+.loading-dots {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 单个点 */
+.loading-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%; /* 圆形 */
+    background: rgba(255, 255, 255, 0.5);
+    animation: dotBounce 1.4s ease-in-out infinite; /* 弹跳动画 */
+}
+
+/* 第2个点延迟 */
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* 第3个点延迟 */
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* 点弹跳动画 */
+@keyframes dotBounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6); /* 缩小 */
+        opacity: 0.3;
+    }
+    40% {
+        transform: scale(1.2); /* 放大 */
+        opacity: 1;
+    }
+}
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏 (≤ 1199px) */
+@media (max-width: 1199px) {
+    .constellation-name-cn {
+        font-size: 24px;
+        letter-spacing: 10px;
+    }
+
+    .constellation-name {
+        font-size: 13px;
+        letter-spacing: 5px;
+    }
+
+    .constellation-desc {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+}
+
+/* 平板竖屏 (≤ 768px) */
+@media (max-width: 768px) {
+    .loading-info {
+        bottom: 8%; /* 调整位置 */
+    }
+
+    .constellation-name-cn {
+        font-size: 20px;
+        letter-spacing: 8px;
+    }
+
+    .constellation-name {
+        font-size: 12px;
+        letter-spacing: 4px;
+    }
+
+    .constellation-desc {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    .loading-text {
+        font-size: 12px;
+    }
+}
+
+/* 手机屏幕 (≤ 576px) */
+@media (max-width: 576px) {
+    .loading-info {
+        bottom: 6%;
+        padding: 0 20px; /* 左右留白 */
+    }
+
+    .constellation-name-cn {
+        font-size: 18px;
+        letter-spacing: 6px;
+    }
+
+    .constellation-name {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .constellation-desc {
+        font-size: 9px;
+        letter-spacing: 1px;
+        min-height: 16px;
+    }
+
+    .loading-text {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .loading-dots span {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+/* 小屏手机 (≤ 400px) */
+@media (max-width: 400px) {
+    .constellation-name-cn {
+        font-size: 16px;
+        letter-spacing: 4px;
+    }
+
+    .constellation-name {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+}

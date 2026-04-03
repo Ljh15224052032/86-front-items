@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>星座连线Loading动画 - Constellation Loading Animation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Canvas画布 -->
+    <canvas id="canvas"></canvas>
+
+    <!-- 加载信息显示区域 -->
+    <div class="loading-info">
+        <!-- 星座中文名称 -->
+        <div class="constellation-name-cn" id="constellationNameCN">猎户座</div>
+        <!-- 星座英文名称 -->
+        <div class="constellation-name" id="constellationName">ORION</div>
+        <!-- 星座描述 -->
+        <div class="constellation-desc" id="constellationDesc">
+            冬季之王 · 腰带三星最易辨认
+        </div>
+        <!-- Loading指示器 -->
+        <div class="loading-row">
+            <div class="loading-text">Loading</div>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript代码 -->
+    <script src="script.js"></script>
+</body>
+</html>
