@@ -48,7 +48,7 @@ frontend-86-projects/
 
 ## 🌐 在线演示
 
-**项目导航页**: [查看所有项目](index.html)
+**项目导航页**: [查看所有项目](https://ljh15224052032.github.io/86-front-items/)
 
 点击"查阅"按钮可跳转到具体项目页面。
 
