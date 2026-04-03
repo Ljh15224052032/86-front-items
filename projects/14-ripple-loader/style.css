@@ -1,0 +1,169 @@
+/* ==============================
+   项目14：Ripple Loader Animation
+   波纹加载动画效果
+   来源：Uiverse.io by Smit-Prajapati
+   ============================== */
+
+/* 页面全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面主体 - 居中布局 */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a; /* 深灰色背景，突出加载动画 */
+    font-family: Arial, sans-serif;
+}
+
+/* ========== 加载动画容器 ========== */
+.loader {
+    /* 使用CSS变量定义可配置参数 */
+    --size: 250px;              /* 容器尺寸 */
+    --duration: 2s;             /* 动画时长 */
+    --logo-color: #808080;      /* Logo颜色（灰色） */
+    --background: linear-gradient( /* 背景渐变 */
+        0deg,
+        rgba(50, 50, 50, 0.2) 0%,
+        rgba(100, 100, 100, 0.2) 100%
+    );
+
+    height: var(--size);
+    aspect-ratio: 1; /* 宽高比1:1，保持正方形 */
+    position: relative; /* 相对定位，为子元素提供定位参考 */
+}
+
+/* ========== 波纹圆圈 ========== */
+.loader .box {
+    position: absolute; /* 绝对定位 */
+    background: rgba(100, 100, 100, 0.15); /* 半透明灰色背景 */
+    background: var(--background); /* 使用变量定义的背景 */
+    border-radius: 50%; /* 圆形 */
+    border-top: 1px solid rgba(100, 100, 100, 1); /* 顶部边框 */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px; /* 阴影效果 */
+    backdrop-filter: blur(5px); /* 背景模糊效果（玻璃态） */
+    animation: ripple var(--duration) infinite ease-in-out; /* 应用波纹动画 */
+}
+
+/* 第1个圆圈（最内层，包含Logo） */
+.loader .box:nth-child(1) {
+    inset: 40%; /* 距离边缘40% */
+    z-index: 99; /* 层级最高 */
+}
+
+/* 第2个圆圈 */
+.loader .box:nth-child(2) {
+    inset: 30%; /* 距离边缘30% */
+    z-index: 98;
+    border-color: rgba(100, 100, 100, 0.8); /* 边框颜色稍深 */
+    animation-delay: 0.2s; /* 延迟0.2秒 */
+}
+
+/* 第3个圆圈 */
+.loader .box:nth-child(3) {
+    inset: 20%; /* 距离边缘20% */
+    z-index: 97;
+    border-color: rgba(100, 100, 100, 0.6);
+    animation-delay: 0.4s; /* 延迟0.4秒 */
+}
+
+/* 第4个圆圈 */
+.loader .box:nth-child(4) {
+    inset: 10%; /* 距离边缘10% */
+    z-index: 96;
+    border-color: rgba(100, 100, 100, 0.4);
+    animation-delay: 0.6s; /* 延迟0.6秒 */
+}
+
+/* 第5个圆圈（最外层） */
+.loader .box:nth-child(5) {
+    inset: 0%; /* 填满整个容器 */
+    z-index: 95;
+    border-color: rgba(100, 100, 100, 0.2);
+    animation-delay: 0.8s; /* 延迟0.8秒 */
+}
+
+/* ========== Logo样式 ========== */
+.loader .logo {
+    position: absolute;
+    inset: 0; /* 填满父容器 */
+    display: grid;
+    place-content: center; /* 使用Grid居中 */
+    padding: 30%; /* 内边距 */
+}
+
+.loader .logo svg {
+    fill: var(--logo-color); /* SVG填充颜色 */
+    width: 100%; /* 宽度100% */
+    animation: color-change var(--duration) infinite ease-in-out; /* 颜色变化动画 */
+}
+
+/* ========== 波纹扩散动画 ========== */
+@keyframes ripple {
+    0% {
+        transform: scale(1); /* 原始大小 */
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px; /* 原始阴影 */
+    }
+    50% {
+        transform: scale(1.3); /* 放大到1.3倍 */
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 30px 20px -0px; /* 阴影扩散 */
+    }
+    100% {
+        transform: scale(1); /* 恢复原始大小 */
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 10px -0px; /* 恢复原始阴影 */
+    }
+}
+
+/* ========== 颜色变化动画 ========== */
+@keyframes color-change {
+    0% {
+        fill: var(--logo-color); /* 灰色 */
+    }
+    50% {
+        fill: white; /* 白色 */
+    }
+    100% {
+        fill: var(--logo-color); /* 恢复灰色 */
+    }
+}
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏 (≤ 1199px) */
+@media (max-width: 1199px) {
+    .loader {
+        --size: 200px; /* 缩小到200px */
+    }
+}
+
+/* 平板竖屏 (≤ 768px) */
+@media (max-width: 768px) {
+    .loader {
+        --size: 150px; /* 缩小到150px */
+    }
+}
+
+/* 手机屏幕 (≤ 576px) */
+@media (max-width: 576px) {
+    .loader {
+        --size: 120px; /* 缩小到120px */
+    }
+
+    .loader .logo svg {
+        padding: 20%; /* 调整Logo内边距 */
+    }
+}
+
+/* 小屏手机 (≤ 400px) */
+@media (max-width: 400px) {
+    .loader {
+        --size: 100px; /* 缩小到100px */
+    }
+}

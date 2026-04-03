@@ -21,7 +21,7 @@ frontend-86-projects/
 │   ├── 12-bubble-animation/         # 气泡背景动画
 │   └── 13-3d-model-showcase/        # 3D模型展示页
 ├── assets/               # 公共资源
-├── index0.html           # 项目导航页（GitHub Pages首页）
+├── index.html           # 项目导航页（GitHub Pages首页）
 ├── 快速开始.md           # 精简操作指南
 ├── 经验记录.md           # 开发经验记录
 └── README.md             # 本文件
@@ -59,7 +59,7 @@ frontend-86-projects/
    git clone https://github.com/your-username/frontend-86-projects.git
    cd frontend-86-projects
    ```
-2. 直接在浏览器中打开 `index0.html` 或具体项目的 `index.html`
+2. 直接在浏览器中打开 `index.html` 或具体项目的 `index.html`
 
 ### 方式二：使用 Live Server（推荐）
 1. 安装 VS Code 扩展 `Live Server`
