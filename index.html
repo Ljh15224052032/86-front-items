@@ -25,7 +25,8 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
+            padding-bottom: 80px; /* 为固定的分页控件留出空间 */
         }
 
         header {
@@ -79,7 +80,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* 大屏幕下每行最多5个 */
+        @media (min-width: 1400px) {
+            .projects-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .projects-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         .project-card {
@@ -92,6 +106,7 @@
             display: flex;
             flex-direction: column;
             transition: all 0.2s;
+            min-height: 140px;
         }
 
         .project-card:hover {
@@ -106,35 +121,43 @@
             padding: 2px 8px;
             font-size: 0.55rem;
             font-weight: bold;
-            margin-bottom: 6px;
-            align-self: flex-start;
+            margin-bottom: 8px;
             letter-spacing: 0.05em;
         }
 
         .project-title {
             font-size: 0.9rem;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: #2c3e50;
             line-height: 1.4;
             font-weight: bold;
+            min-height: 2.8em;
         }
 
         .project-tech {
             color: #5a4a3a;
             font-size: 0.7rem;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             line-height: 1.3;
             font-style: italic;
+            flex-grow: 1;
         }
 
         .project-status {
-            display: inline-block;
-            padding: 3px 8px;
-            font-size: 0.65rem;
-            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            padding: 2px 3px;
+            font-size: 0.55rem;
             border: 1px solid;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0;
+            margin-top: auto;
+            border-radius: 2px;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .status-done {
@@ -179,18 +202,18 @@
         .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             margin-bottom: 25px;
             flex-wrap: wrap;
             padding: 0 10px;
         }
 
         .category-tab {
-            padding: 8px 16px;
+            padding: 10px 20px;
             background: #fff;
             border: 1px solid #d4c5b0;
             color: #5a4a3a;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
             font-family: Georgia, "Times New Roman", serif;
@@ -237,10 +260,65 @@
                 opacity: 0;
                 transform: translateY(10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* 分页样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            position: fixed; /* 固定在页面底部 */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #faf8f5;
+            border-top: 2px solid #d4c5b0;
+            z-index: 100;
+        }
+
+        .page-btn {
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #d4c5b0;
+            color: #8b4513;
+            font-size: 14px; /* 固定px，不用rem或vw */
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 4px;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background: #8b4513;
+            color: #fff;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            font-size: 14px; /* 固定px */
+            color: #5a4a3a;
+        }
+
+        #currentPage, #totalPages {
+            font-weight: bold;
+            color: #8b4513;
+            font-size: 14px; /* 固定px */
+        }
+
+        /* 为内容区域添加底部内边距，避免被固定的分页遮挡 */
+        .container {
+            padding-bottom: 80px;
         }
 
         /* 查阅按钮样式 */
@@ -300,56 +378,68 @@
             }
         }
 
-        /* 超宽屏幕优化 (2560px+ 2K/4K) */
-        @media (min-width: 2560px) {
-            .container {
-                max-width: 2400px;
+        /* 超宽屏幕 (1920px+) - 使用vw单位和百分比 */
+        @media (min-width: 1920px) {
+            html {
+                font-size: 16px; /* 基准字体大小 */
             }
 
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 18px;
+            .container {
+                max-width: 90vw; /* 宽度占视窗90% */
+                padding: 0 2vw;
             }
 
             h1 {
-                font-size: 2.2rem;
+                font-size: clamp(2rem, 2.5vw, 3rem); /* 动态字体：最小2rem，首选2.5vw，最大3rem */
+            }
+
+            .subtitle {
+                font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(5, 1fr); /* 每行固定5个 */
+                gap: 1.5vw;
             }
 
             .project-card {
-                padding: 16px;
+                padding: 1.2vw;
+            }
+
+            .project-title {
+                font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+            }
+
+            .project-tech {
+                font-size: clamp(0.7rem, 0.9vw, 1rem);
+            }
+
+            .project-number {
+                font-size: clamp(0.55rem, 0.7vw, 0.8rem);
+                padding: 0.2vw 0.6vw;
+            }
+
+            .project-status {
+                width: clamp(45px, 6vw, 60px); /* 动态宽度 */
+                padding: 0.2vw 0.5vw;
+                font-size: clamp(0.55rem, 0.7vw, 0.8rem);
+            }
+
+            .stats {
+                gap: 2vw;
+            }
+
+            .stat-item {
+                padding: 0.8vw 2vw;
+            }
+
+            .stat-number {
+                font-size: clamp(1.2rem, 1.8vw, 2.2rem);
             }
         }
 
-        /* 超宽屏幕 (1920px - 2559px) */
-        @media (min-width: 1920px) and (max-width: 2559px) {
-            .container {
-                max-width: 1800px;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 16px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-        }
-
-        /* 大屏幕 (1600px - 1919px) */
-        @media (min-width: 1600px) and (max-width: 1919px) {
-            .container {
-                max-width: 1500px;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-                gap: 14px;
-            }
-        }
-
-        /* 中大屏幕 (1400px - 1599px) */
-        @media (min-width: 1400px) and (max-width: 1599px) {
+        /* 大屏幕 (1400px - 1919px) */
+        @media (min-width: 1400px) and (max-width: 1919px) {
             .container {
                 max-width: 1300px;
             }
@@ -580,7 +670,12 @@
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <!-- 更多项目卡片... -->
+            <!-- 分页控件 -->
+            <div class="pagination" id="pagination">
+                <button class="page-btn" id="prevBtn" disabled>‹ 上一页</button>
+                <span class="page-info">第 <span id="currentPage">1</span> 页 / 共 <span id="totalPages">2</span> 页</span>
+                <button class="page-btn" id="nextBtn">下一页 ›</button>
+            </div>
         </main>
 
         <footer>
@@ -595,7 +690,7 @@
             const cards = document.querySelectorAll('.project-card');
 
             tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     // 移除所有Tab的active状态
                     tabs.forEach(t => t.classList.remove('active'));
                     // 激活当前Tab
@@ -613,11 +708,17 @@
 
                         if (category === 'all' || cardCategory === category) {
                             card.classList.remove('hidden');
+                            card.style.display = 'flex';
                             card.style.animation = 'fadeIn 0.3s ease-in-out';
                         } else {
                             card.classList.add('hidden');
+                            card.style.display = 'none';
                         }
                     });
+
+                    // 过滤后重新应用分页
+                    currentPage = 1;
+                    showPage(1);
                 });
             });
         }
@@ -686,9 +787,100 @@
             });
         }
 
+        // ========== 分页功能 ==========
+        const itemsPerPage = 15; // 每页15个项目（5列 x 3行）
+        let currentPage = 1;
+
+        function initPagination() {
+            const cards = Array.from(document.querySelectorAll('.project-card'));
+            const totalPages = Math.ceil(cards.length / itemsPerPage);
+
+            // 更新总页数
+            document.getElementById('totalPages').textContent = totalPages;
+
+            // 显示第一页
+            showPage(1);
+
+            // 绑定翻页按钮事件
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+        }
+
+        function showPage(page) {
+            const cards = Array.from(document.querySelectorAll('.project-card'));
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            // 隐藏所有卡片
+            cards.forEach((card, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    card.classList.remove('hidden');
+                    card.style.display = 'flex';
+                } else {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }
+            });
+
+            // 更新当前页码
+            document.getElementById('currentPage').textContent = page;
+
+            // 更新按钮状态
+            document.getElementById('prevBtn').disabled = (page === 1);
+            document.getElementById('nextBtn').disabled = (page === Math.ceil(cards.length / itemsPerPage));
+
+            // 更新统计（只统计当前页）
+            updateCurrentPageStats();
+        }
+
+        function updateCurrentPageStats() {
+            const visibleCards = Array.from(document.querySelectorAll('.project-card:not(.hidden)'));
+            let completed = 0;
+
+            visibleCards.forEach(card => {
+                const status = card.querySelector('.project-status');
+                if (status && status.classList.contains('status-done')) {
+                    completed++;
+
+                    // 为已完成的卡片添加查阅按钮
+                    if (!card.querySelector('.view-btn')) {
+                        const viewBtn = document.createElement('button');
+                        viewBtn.className = 'view-btn';
+                        viewBtn.textContent = '查阅';
+
+                        viewBtn.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const href = card.getAttribute('data-href');
+                            if (href) {
+                                window.location.href = href;
+                            }
+                        });
+
+                        card.appendChild(viewBtn);
+                    }
+                }
+            });
+
+            // 更新统计显示当前页的完成数
+            document.querySelectorAll('.stat-number')[1].textContent = completed;
+        }
+
         // ========== 初始化 ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            updateStats();
+        document.addEventListener('DOMContentLoaded', function () {
+            updateStats(); // 更新全局统计（总共86个）
+            initPagination(); // 初始化分页
             updateCategoryCounts();
             initCategoryFilter();
         });
