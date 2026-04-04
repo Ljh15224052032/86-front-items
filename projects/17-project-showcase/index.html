@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目展示平台 - Project Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">项目</span>
+                <div class="logo-underline"></div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="control-group">
+                <div class="control-item">
+                    <label>列数: <span id="columnsValue">3</span></label>
+                    <input type="range" id="columnsSlider" min="2" max="5" value="3">
+                </div>
+                <div class="control-item">
+                    <label>每页: <span id="perPageValue">6</span></label>
+                    <input type="range" id="perPageSlider" min="6" max="12" value="6">
+                </div>
+            </div>
+            <div class="view-toggle">
+                <button class="view-btn active" id="gridViewBtn">网格</button>
+                <button class="view-btn" id="timelineViewBtn">时间线</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 分类标签栏 -->
+    <div class="category-bar">
+        <button class="category-tab active" data-category="all">全部</button>
+        <button class="category-tab" data-category="infographic">信息图</button>
+        <button class="category-tab" data-category="thumbnail">缩略图</button>
+        <button class="category-tab" data-category="wallpaper">壁纸</button>
+        <button class="category-tab" data-category="interface">界面</button>
+        <button class="category-tab" data-category="typography">字体设计</button>
+        <button class="category-tab" data-category="commission">委托</button>
+        <button class="category-tab" data-category="misc">杂项</button>
+    </div>
+
+    <!-- 搜索框 -->
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search projects...">
+    </div>
+
+    <!-- 项目网格区域 -->
+    <div class="projects-container">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- 项目卡片将通过JavaScript生成 -->
+        </div>
+
+        <!-- 分页区域 -->
+        <div class="pagination" id="pagination">
+            <!-- 分页按钮将通过JavaScript生成 -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

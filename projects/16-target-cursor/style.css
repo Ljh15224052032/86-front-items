@@ -1,0 +1,263 @@
+/* ==============================
+   项目16：Target Cursor Effect
+   目标光标效果
+   ============================== */
+
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面主体 - 黑色背景 */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+    background: #000; /* 纯黑色背景 */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    cursor: none; /* 隐藏默认光标 */
+}
+
+/* ========== 容器样式 ========== */
+.container {
+    text-align: center;
+    color: #fff;
+    padding: 40px;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.6;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+/* ========== 按钮容器 ========== */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* ========== 按钮基础样式 ========== */
+.cursor-target {
+    padding: 18px 50px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: none; /* 重要：保持自定义光标 */
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 按钮悬停效果 */
+.cursor-target:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 按钮点击效果 */
+.cursor-target:active {
+    transform: scale(0.98);
+}
+
+/* ========== 主按钮 ========== */
+.btn-primary {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* ========== 次按钮 ========== */
+.btn-secondary {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+/* ========== 第三按钮 ========== */
+.btn-tertiary {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-tertiary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ========== 自定义光标样式 ========== */
+
+/* 光标容器 */
+.target-cursor-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none; /* 让鼠标事件穿透 */
+    z-index: 9999;
+    mix-blend-mode: difference; /* 差值混合模式 */
+    transform: translate(-50%, -50%); /* 居中定位 */
+}
+
+/* 中心点 */
+.target-cursor-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #fff; /* 白色 */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform; /* 性能优化 */
+}
+
+/* 四个角 */
+.target-cursor-corner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border: 3px solid #fff; /* 白色边框 */
+    will-change: transform;
+}
+
+/* 左上角 */
+.corner-tl {
+    transform: translate(-150%, -150%);
+    border-right: none;
+    border-bottom: none;
+}
+
+/* 右上角 */
+.corner-tr {
+    transform: translate(50%, -150%);
+    border-left: none;
+    border-bottom: none;
+}
+
+/* 右下角 */
+.corner-br {
+    transform: translate(50%, 50%);
+    border-left: none;
+    border-top: none;
+}
+
+/* 左下角 */
+.corner-bl {
+    transform: translate(-150%, 50%);
+    border-right: none;
+    border-top: none;
+}
+
+/* ==============================
+   响应式设计
+   ============================== */
+
+/* 平板横屏 (≤ 1199px) */
+@media (max-width: 1199px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .buttons-container {
+        gap: 25px;
+    }
+
+    .cursor-target {
+        padding: 16px 40px;
+        font-size: 17px;
+    }
+}
+
+/* 平板竖屏 (≤ 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cursor-target {
+        padding: 15px 40px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* 手机屏幕 (≤ 576px) */
+@media (max-width: 576px) {
+    .title {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 40px;
+    }
+
+    .cursor-target {
+        padding: 14px 35px;
+        font-size: 15px;
+    }
+}
+
+/* 小屏手机 (≤ 400px) */
+@media (max-width: 400px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .cursor-target {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}

@@ -22,7 +22,9 @@ frontend-86-projects/
 │   ├── 12-bubble-animation/         # 气泡背景动画
 │   ├── 13-3d-model-showcase/        # 3D模型展示页
 │   ├── 14-ripple-loader/            # 波纹加载动画
-│   └── 15-constellation-loader/     # 星座连线Loading
+│   ├── 15-constellation-loader/     # 星座连线Loading
+│   ├── 16-target-cursor/            # 目标光标效果
+│   └── 17-project-showcase/         # 项目展示平台
 ├── assets/               # 公共资源
 ├── index.html           # 项目导航页（GitHub Pages首页）
 ├── 快速开始.md           # 精简操作指南
@@ -49,6 +51,8 @@ frontend-86-projects/
 | 13 | 3D模型展示页 | Sketchfab iframe, Responsive Layout, Page Transition | ✅ 已完成 | [查看](projects/13-3d-model-showcase/) |
 | 14 | 波纹加载动画 | CSS Animation, SVG, Variables, Glassmorphism | ✅ 已完成 | [查看](projects/14-ripple-loader/) |
 | 15 | 星座连线Loading | Canvas 2D, JavaScript, State Machine | ✅ 已完成 | [查看](projects/15-constellation-loader/) |
+| 16 | 目标光标效果 | GSAP, JavaScript, React to JS | ✅ 已完成 | [查看](projects/16-target-cursor/) |
+| 17 | 项目展示平台 | CSS Grid, Flexbox, JavaScript, Dynamic Layout | ✅ 已完成 | [查看](projects/17-project-showcase/) |
 
 ## 🌐 在线演示
 
@@ -102,13 +106,15 @@ git push
 ## 📝 开发进度
 
 - **总项目数**: 86
-- **已完成**: 13
+- **已完成**: 15
 - **已跳过**: 2
 - **开发中**: 0
-- **完成率**: 15.1%
+- **完成率**: 17.4%
 
 ## 🏷️ 版本历史
 
+- **v0.4** (2026-04-04) - 完成项目17（项目展示平台），实现网格视图和时间线视图，支持动态列数调整、分类筛选、搜索过滤等功能
+- **v0.3** (2026-04-04) - 完成项目16（目标光标效果），React组件成功转换为纯JavaScript
 - **v0.2** (2026-04-04) - 完成项目14（波纹加载动画）、项目15（星座连线Loading），更新项目13为完成状态
 - **v0.1** (2026-04-03) - 完成前13个项目，搭建基础框架
 

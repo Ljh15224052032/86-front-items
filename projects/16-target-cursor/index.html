@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目标光标效果 - Target Cursor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 自定义光标 -->
+    <div class="target-cursor-wrapper" id="cursor">
+        <div class="target-cursor-dot"></div>
+        <div class="target-cursor-corner corner-tl"></div>
+        <div class="target-cursor-corner corner-tr"></div>
+        <div class="target-cursor-corner corner-br"></div>
+        <div class="target-cursor-corner corner-bl"></div>
+    </div>
+
+    <!-- 演示内容 -->
+    <div class="container">
+        <h1 class="title">目标光标效果</h1>
+        <p class="subtitle">移动鼠标到按钮上查看效果</p>
+
+        <div class="buttons-container">
+            <button class="cursor-target btn-primary">主按钮</button>
+            <button class="cursor-target btn-secondary">次按钮</button>
+            <button class="cursor-target btn-tertiary">第三按钮</button>
+        </div>
+    </div>
+
+    <!-- 引入GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

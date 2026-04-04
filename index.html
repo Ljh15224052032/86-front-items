@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,6 +165,82 @@
             border-color: #d35400;
         }
 
+        /* 分类标签样式 */
+        .category-tag {
+            font-size: 0.65rem;
+            color: #8b4513;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        /* ========== 分类Tab栏 ========== */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
+
+        .category-tab {
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #d4c5b0;
+            color: #5a4a3a;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: Georgia, "Times New Roman", serif;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        .category-tab:hover {
+            border-color: #8b4513;
+            background: #faf8f5;
+        }
+
+        .category-tab.active {
+            background: #2f4f4f;
+            color: #fff;
+            border-color: #2f4f4f;
+        }
+
+        .category-tab .count {
+            display: inline-block;
+            margin-left: 4px;
+            padding: 2px 6px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 0.7rem;
+        }
+
+        .category-tab.active .count {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 隐藏的卡片 */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* 淡入淡出动画 */
+        .project-card {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* 查阅按钮样式 */
         .project-card {
             position: relative;
@@ -205,6 +282,22 @@
         }
 
         /* 响应式布局优化 */
+        @media (max-width: 767px) {
+            .category-tabs {
+                gap: 8px;
+                justify-content: flex-start;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 5px;
+            }
+
+            .category-tab {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+                white-space: nowrap;
+            }
+        }
+
         @media (min-width: 1400px) {
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -258,11 +351,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>前端86个项目练习</h1>
-            <p class="subtitle">系统化的前端交互效果练习项目集</p>
+            <p class="subtitle">系统化的前端交互效果练习项目集---笔记本观看效果更佳</p>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number">86</div>
@@ -279,110 +373,149 @@
             </div>
         </header>
 
+        <!-- 分类Tab栏 -->
+        <nav class="category-tabs" id="categoryTabs">
+            <button class="category-tab active" data-category="all">
+                全部项目<span class="count">16</span>
+            </button>
+            <button class="category-tab" data-category="loading">
+                加载动画<span class="count">4</span>
+            </button>
+            <button class="category-tab" data-category="navigation">
+                导航效果<span class="count">3</span>
+            </button>
+            <button class="category-tab" data-category="visual">
+                视觉效果<span class="count">5</span>
+            </button>
+            <button class="category-tab" data-category="media">
+                媒体组件<span class="count">2</span>
+            </button>
+            <button class="category-tab" data-category="form">
+                表单组件<span class="count">1</span>
+            </button>
+            <button class="category-tab" data-category="other">
+                其他<span class="count">1</span>
+            </button>
+        </nav>
+
         <main class="projects-grid">
             <!-- 项目卡片示例 -->
-            <div class="project-card" data-href="projects/01-parallax-scrolling/">
+            <div class="project-card" data-href="projects/01-parallax-scrolling/" data-category="visual">
                 <span class="project-number">01</span>
                 <h2 class="project-title">视差滚动效果</h2>
                 <p class="project-tech">CSS3, JavaScript, 视差滚动</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/02-fullscreen-video/">
+            <div class="project-card" data-href="projects/02-fullscreen-video/" data-category="media">
                 <span class="project-number">02</span>
                 <h2 class="project-title">全屏视频背景</h2>
                 <p class="project-tech">HTML5 Video, CSS3</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/03-transform-effects/">
+            <div class="project-card" data-href="projects/03-transform-effects/" data-category="other">
                 <span class="project-number">03</span>
                 <h2 class="project-title">滚动变换效果</h2>
                 <p class="project-tech">CSS3 Transform, JavaScript</p>
                 <span class="project-status status-skipped">已跳过</span>
             </div>
 
-            <div class="project-card" data-href="projects/04-responsive-navigation/">
+            <div class="project-card" data-href="projects/04-responsive-navigation/" data-category="navigation">
                 <span class="project-number">04</span>
                 <h2 class="project-title">全屏覆盖响应式导航</h2>
                 <p class="project-tech">CSS3, JavaScript, 响应式设计</p>
                 <span class="project-status status-skipped">已跳过</span>
             </div>
 
-            <div class="project-card" data-href="projects/05-loading-bar-animation/">
+            <div class="project-card" data-href="projects/05-loading-bar-animation/" data-category="loading">
                 <span class="project-number">05</span>
                 <h2 class="project-title">加载条波浪动画</h2>
                 <p class="project-tech">CSS Animation, Flexbox</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/06-social-media-navigation/">
+            <div class="project-card" data-href="projects/06-social-media-navigation/" data-category="navigation">
                 <span class="project-number">06</span>
                 <h2 class="project-title">社交媒体悬停导航</h2>
                 <p class="project-tech">CSS Pseudo-elements, Transform, Font Awesome</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/07-icon-hover-effects/">
+            <div class="project-card" data-href="projects/07-icon-hover-effects/" data-category="navigation">
                 <span class="project-number">07</span>
                 <h2 class="project-title">图标悬停效果</h2>
                 <p class="project-tech">CSS Transform, Pseudo-elements, Font Awesome</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/08-transparent-text-effects/">
+            <div class="project-card" data-href="projects/08-transparent-text-effects/" data-category="visual">
                 <span class="project-number">08</span>
                 <h2 class="project-title">透明文字效果</h2>
                 <p class="project-tech">CSS mix-blend-mode, text-shadow, background</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/09-split-image-hover/">
+            <div class="project-card" data-href="projects/09-split-image-hover/" data-category="visual">
                 <span class="project-number">09</span>
                 <h2 class="project-title">悬停分裂图片</h2>
                 <p class="project-tech">CSS Transform, Pseudo-elements, 3D Rotation</p>
                 <span class="project-status status-issue">略有瑕疵</span>
             </div>
 
-            <div class="project-card" data-href="projects/10-neon-light-effects/">
+            <div class="project-card" data-href="projects/10-neon-light-effects/" data-category="visual">
                 <span class="project-number">10</span>
                 <h2 class="project-title">霓虹灯文字效果</h2>
                 <p class="project-tech">CSS text-shadow, filter, blur, attr()</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/11-login-form/">
+            <div class="project-card" data-href="projects/11-login-form/" data-category="form">
                 <span class="project-number">11</span>
                 <h2 class="project-title">登录表单</h2>
                 <p class="project-tech">CSS Float, Box-shadow, Form Styling</p>
                 <span class="project-status status-issue">不太完善</span>
             </div>
 
-            <div class="project-card" data-href="projects/12-bubble-animation/">
+            <div class="project-card" data-href="projects/12-bubble-animation/" data-category="loading">
                 <span class="project-number">12</span>
                 <h2 class="project-title">气泡背景动画</h2>
                 <p class="project-tech">CSS Animation, Keyframes, Transform</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/13-3d-model-showcase/">
+            <div class="project-card" data-href="projects/13-3d-model-showcase/" data-category="media">
                 <span class="project-number">13</span>
                 <h2 class="project-title">3D模型展示页</h2>
                 <p class="project-tech">Sketchfab iframe, Responsive Layout</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/14-ripple-loader/">
+            <div class="project-card" data-href="projects/14-ripple-loader/" data-category="loading">
                 <span class="project-number">14</span>
                 <h2 class="project-title">波纹加载动画</h2>
                 <p class="project-tech">CSS Animation, SVG, Ripple Effect</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
-            <div class="project-card" data-href="projects/15-constellation-loader/">
+            <div class="project-card" data-href="projects/15-constellation-loader/" data-category="loading">
                 <span class="project-number">15</span>
                 <h2 class="project-title">星座连线Loading</h2>
                 <p class="project-tech">Canvas 2D, JavaScript, Animation</p>
+                <span class="project-status status-done">已完成</span>
+            </div>
+
+            <div class="project-card" data-href="projects/16-target-cursor/" data-category="visual">
+                <span class="project-number">16</span>
+                <h2 class="project-title">目标光标效果</h2>
+                <p class="project-tech">GSAP, JavaScript, mix-blend-mode</p>
+                <span class="project-status status-done">已完成</span>
+            </div>
+
+            <div class="project-card" data-href="projects/17-project-showcase/" data-category="other">
+                <span class="project-number">17</span>
+                <h2 class="project-title">项目展示平台</h2>
+                <p class="project-tech">CSS Grid, Flexbox, JavaScript, Dynamic Layout</p>
                 <span class="project-status status-done">已完成</span>
             </div>
 
@@ -395,7 +528,40 @@
     </div>
 
     <script>
-        // 动态更新统计信息（需要根据实际情况调整）
+        // ========== 分类过滤功能 ==========
+        function initCategoryFilter() {
+            const tabs = document.querySelectorAll('.category-tab');
+            const cards = document.querySelectorAll('.project-card');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有Tab的active状态
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // 激活当前Tab
+                    this.classList.add('active');
+
+                    const category = this.getAttribute('data-category');
+
+                    // 过滤项目卡片
+                    cards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+
+                        // 移除动画以重新触发
+                        card.style.animation = 'none';
+                        card.offsetHeight; // 触发重绘
+
+                        if (category === 'all' || cardCategory === category) {
+                            card.classList.remove('hidden');
+                            card.style.animation = 'fadeIn 0.3s ease-in-out';
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        }
+
+        // ========== 动态更新统计信息 ==========
         function updateStats() {
             const total = 86;
             const cards = document.querySelectorAll('.project-card');
@@ -413,7 +579,7 @@
                         viewBtn.textContent = '查阅';
 
                         // 只有点击按钮时才跳转
-                        viewBtn.addEventListener('click', function(e) {
+                        viewBtn.addEventListener('click', function (e) {
                             e.preventDefault();
                             e.stopPropagation();
                             const href = card.getAttribute('data-href');
@@ -433,8 +599,39 @@
             document.querySelectorAll('.stat-number')[2].textContent = percentage + '%';
         }
 
-        // 页面加载时更新统计
-        updateStats();
+        // ========== 更新分类计数 ==========
+        function updateCategoryCounts() {
+            const cards = document.querySelectorAll('.project-card');
+            const tabs = document.querySelectorAll('.category-tab');
+
+            tabs.forEach(tab => {
+                const category = tab.getAttribute('data-category');
+                let count = 0;
+
+                if (category === 'all') {
+                    count = cards.length;
+                } else {
+                    cards.forEach(card => {
+                        if (card.getAttribute('data-category') === category) {
+                            count++;
+                        }
+                    });
+                }
+
+                const countSpan = tab.querySelector('.count');
+                if (countSpan) {
+                    countSpan.textContent = count;
+                }
+            });
+        }
+
+        // ========== 初始化 ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            updateCategoryCounts();
+            initCategoryFilter();
+        });
     </script>
 </body>
+
 </html>
