@@ -22,8 +22,10 @@
         }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         header {
@@ -298,18 +300,77 @@
             }
         }
 
-        @media (min-width: 1400px) {
+        /* 超宽屏幕优化 (2560px+ 2K/4K) */
+        @media (min-width: 2560px) {
+            .container {
+                max-width: 2400px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 18px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-card {
+                padding: 16px;
+            }
+        }
+
+        /* 超宽屏幕 (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .container {
+                max-width: 1800px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* 大屏幕 (1600px - 1919px) */
+        @media (min-width: 1600px) and (max-width: 1919px) {
+            .container {
+                max-width: 1500px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+                gap: 14px;
+            }
+        }
+
+        /* 中大屏幕 (1400px - 1599px) */
+        @media (min-width: 1400px) and (max-width: 1599px) {
+            .container {
+                max-width: 1300px;
+            }
+
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             }
         }
 
+        /* 标准大屏幕 (1200px - 1399px) */
         @media (min-width: 1200px) and (max-width: 1399px) {
+            .container {
+                max-width: 1140px;
+            }
+
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
         }
 
+        /* 中等屏幕 (992px - 1199px) */
         @media (min-width: 992px) and (max-width: 1199px) {
             .projects-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
