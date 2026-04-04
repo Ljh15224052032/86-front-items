@@ -77,6 +77,95 @@ function init() {
     renderProjects();
 }
 
+// ========== FLIP动画技术 ==========
+function flipTransition(updateCallback) {
+    // 只在网格视图执行FLIP动画
+    if (currentState.viewMode !== 'grid') {
+        updateCallback();
+        return;
+    }
+
+    const cards = Array.from(document.querySelectorAll('.projects-grid .project-card'));
+
+    // 如果没有卡片，直接执行更新
+    if (cards.length === 0) {
+        updateCallback();
+        return;
+    }
+
+    // 1. First: 记录所有卡片的初始位置和ID
+    const firstRects = cards.map(card => card.getBoundingClientRect());
+    const cardIds = cards.map(card => {
+        const numberEl = card.querySelector('.project-number');
+        return numberEl ? numberEl.textContent : '';
+    });
+
+    // 2. 执行更新回调
+    updateCallback();
+
+    // 3. Last: 获取新位置的卡片
+    const newCards = Array.from(document.querySelectorAll('.projects-grid .project-card'));
+    const newCardIds = newCards.map(card => {
+        const numberEl = card.querySelector('.project-number');
+        return numberEl ? numberEl.textContent : '';
+    });
+    const lastRects = newCards.map(card => card.getBoundingClientRect());
+
+    // 4. 为每个现有卡片应用FLIP动画，新增卡片添加slide-in动画
+    newCards.forEach((card, index) => {
+        const cardId = newCardIds[index];
+        const firstIndex = cardIds.indexOf(cardId);
+
+        if (firstIndex !== -1) {
+            // 现有卡片：执行FLIP动画
+            const firstRect = firstRects[firstIndex];
+            const lastRect = lastRects[index];
+
+            const deltaX = firstRect.left - lastRect.left;
+            const deltaY = firstRect.top - lastRect.top;
+
+            if (deltaX !== 0 || deltaY !== 0) {
+                card.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+                card.style.transition = 'none';
+            }
+        } else {
+            // 新增卡片：添加slide-in动画
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'none';
+        }
+    });
+
+    // 5. Play: 启用transition并移除transform
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            newCards.forEach((card, index) => {
+                const cardId = newCardIds[index];
+                const firstIndex = cardIds.indexOf(cardId);
+
+                if (firstIndex !== -1) {
+                    // 现有卡片：FLIP动画
+                    const firstRect = firstRects[firstIndex];
+                    const lastRect = lastRects[index];
+
+                    const deltaX = firstRect.left - lastRect.left;
+                    const deltaY = firstRect.top - lastRect.top;
+
+                    if (deltaX !== 0 || deltaY !== 0) {
+                        card.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                        card.style.transform = '';
+                    }
+                } else {
+                    // 新增卡片：slide-in动画
+                    card.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = '';
+                }
+            });
+        });
+    });
+}
+
 // ========== 绑定事件监听器 ==========
 function bindEventListeners() {
     // 列数滑块
@@ -108,7 +197,6 @@ function bindEventListeners() {
 
         // 更新标签和布局
         updateSliderLabels();
-        updateGridColumns();
 
         // 重新计算当前页码，防止超出范围
         const maxPage = Math.ceil(currentState.filteredProjects.length / currentState.perPage);
@@ -116,21 +204,34 @@ function bindEventListeners() {
             currentState.currentPage = maxPage || 1;
         }
 
-        // 重新渲染项目
-        renderProjects();
+        // 使用FLIP动画更新网格列数和项目
+        flipTransition(() => {
+            updateGridColumns();
+            renderProjects();
+        });
     });
 
     // 每页数量滑块
     const perPageSlider = document.getElementById('perPageSlider');
     perPageSlider.addEventListener('input', (e) => {
+        const oldPerPage = currentState.perPage;
         currentState.perPage = parseInt(e.target.value);
         updateSliderLabels();
+
         // 重新计算当前页码，防止超出范围
         const maxPage = Math.ceil(currentState.filteredProjects.length / currentState.perPage);
         if (currentState.currentPage > maxPage) {
             currentState.currentPage = maxPage || 1;
         }
-        renderProjects();
+
+        // 如果每页数量变化，使用FLIP动画
+        if (oldPerPage !== currentState.perPage && currentState.viewMode === 'grid') {
+            flipTransition(() => {
+                renderProjects();
+            });
+        } else {
+            renderProjects();
+        }
     });
 
     // 搜索框实时过滤

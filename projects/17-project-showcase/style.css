@@ -259,10 +259,42 @@ body::before {
     border: 2px solid var(--primary-color);
     border-radius: 8px;
     overflow: hidden;
-    transition: filter 0.3s, box-shadow 0.3s;
+    transition: filter 0.3s, box-shadow 0.3s, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     filter: brightness(0.6); /* 默认变暗 */
     position: relative; /* 为project-info的绝对定位提供参考 */
+}
+
+/* 新卡片进入动画 */
+.project-card.slide-in {
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 卡片移出动画 */
+.project-card.slide-out {
+    animation: slideOut 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
 }
 
 .project-card:hover {

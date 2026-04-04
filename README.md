@@ -52,7 +52,7 @@ frontend-86-projects/
 | 14 | 波纹加载动画 | CSS Animation, SVG, Variables, Glassmorphism | ✅ 已完成 | [查看](projects/14-ripple-loader/) |
 | 15 | 星座连线Loading | Canvas 2D, JavaScript, State Machine | ✅ 已完成 | [查看](projects/15-constellation-loader/) |
 | 16 | 目标光标效果 | GSAP, JavaScript, React to JS | ✅ 已完成 | [查看](projects/16-target-cursor/) |
-| 17 | 项目展示平台 | CSS Grid, Flexbox, JavaScript, Dynamic Layout | ✅ 已完成 | [查看](projects/17-project-showcase/) |
+| 17 | 项目展示平台 | CSS Grid, Flexbox, JavaScript, FLIP Animation | ✅ 已完成 | [查看](projects/17-project-showcase/) |
 
 ## 🌐 在线演示
 
