@@ -1,0 +1,285 @@
+/* ==============================
+   项目20：告示板
+   Notice Board
+   ============================== */
+
+/* ========== 全局样式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: #2c1810;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========== 标题栏 ========== */
+.board-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 3px solid #3d2817;
+}
+
+.board-title {
+    font-size: 2.5rem;
+    color: #f4e4bc;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.board-subtitle {
+    font-size: 1.2rem;
+    color: rgba(244, 228, 188, 0.7);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* ========== 告示板主体（木板背景） ========== */
+.notice-board {
+    /* 木板背景 - CSS渐变 */
+    background:
+        /* 横向木纹 */
+        repeating-linear-gradient(
+            90deg,
+            #5d4037 0px,
+            #6d4c41 2px,
+            #5d4037 4px,
+            #4e342e 8px
+        ),
+        /* 纵向木纹 */
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.1) 0px,
+            transparent 2px,
+            rgba(0, 0, 0, 0.05) 4px
+        ),
+        /* 底色 */
+        #4e342e;
+
+    background-blend-mode: normal, normal, normal;
+
+    /* 做旧效果 */
+    position: relative;
+    padding: 60px 40px;
+    border-radius: 15px;
+    border: 8px solid #3e2723;
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.5),
+        0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* 木板划痕效果 */
+.notice-board::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        /* 随机划痕 */
+        linear-gradient(45deg, transparent 40%, rgba(0, 0, 0, 0.1) 45%, transparent 50%),
+        linear-gradient(-45deg, transparent 40%, rgba(0, 0, 0, 0.1) 45%, transparent 50%);
+    background-size: 100px 100px, 80px 80px;
+    pointer-events: none;
+    border-radius: 15px;
+}
+
+/* ========== 网格布局 ========== */
+.notice-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 30px;
+}
+
+/* ========== 信纸卡片 ========== */
+.paper-card {
+    position: relative;
+    background: #f5e6c8;
+    padding: 30px 25px 25px;
+    border-radius: 3px;
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 泛黄旧纸纹理 */
+.paper-card {
+    background:
+        /* 纸张纹理 */
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 119, 85, 0.03) 2px,
+            rgba(139, 119, 85, 0.03) 4px
+        ),
+        /* 泛黄底色 */
+        linear-gradient(
+            to bottom right,
+            #f9f1dc 0%,
+            #f5e6c8 50%,
+            #e8d5b0 100%
+        );
+}
+
+/* 悬停效果 */
+.paper-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.4),
+        inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== 图钉（左上角） ========== */
+.pin {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #9e9e9e, #616161, #424242);
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+/* 图钉头部 */
+.pin::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle at 40% 40%, #bdbdbd, #757575);
+    border-radius: 50%;
+}
+
+/* 图钉针（穿过纸张的效果） */
+.pin::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 2px;
+    background: #424242;
+    border-radius: 50%;
+}
+
+/* ========== 信纸内容 ========== */
+.paper-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* 分类标签 */
+.category-tag {
+    display: inline-block;
+    background: rgba(139, 119, 85, 0.2);
+    color: #5d4e37;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border: 1px solid rgba(139, 119, 85, 0.3);
+    align-self: flex-start;
+}
+
+/* 标题 */
+.paper-title {
+    font-family: 'Satisfy', cursive;  /* 手写字体 */
+    font-size: 1.8rem;
+    color: #3e2723;
+    margin-bottom: 20px;
+    font-weight: 400;  /* Satisfy 字体不需要粗体 */
+    line-height: 1.4;
+    flex: 1;
+}
+
+/* 链接按钮 */
+.paper-link {
+    display: inline-block;
+    color: #5d4e37;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+.paper-link:hover {
+    color: #3e2723;
+    border-bottom-color: #5d4e37;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 1024px) {
+    .notice-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 20px;
+        padding: 40px 30px;
+    }
+
+    .paper-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .notice-board {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+
+    .board-header {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .board-title {
+        font-size: 2rem;
+    }
+
+    .board-subtitle {
+        font-size: 1rem;
+    }
+
+    .paper-card {
+        min-height: 180px;
+        padding: 25px 20px 20px;
+    }
+
+    .pin {
+        left: 15px;
+    }
+}

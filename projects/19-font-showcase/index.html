@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目19：字体展示平台</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@400;700&family=Cinzel:wght@400;700&family=DM+Serif+Display&family=Dosis:wght@400;700&family=Doto&family=Lobster&family=Orbitron:wght@400;700&family=Satisfy&family=Uchen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar">
+            <h1 class="sidebar-title">字体展示平台</h1>
+            <p class="sidebar-subtitle">常用字体预览与对比<br>Font Showcase</p>
+
+            <nav>
+                <div class="nav-category">系统字体</div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#serif" class="nav-link">衬线字体 (Serif)</a></li>
+                    <li class="nav-item"><a href="#sans-serif" class="nav-link">无衬线字体 (Sans-serif)</a></li>
+                    <li class="nav-item"><a href="#monospace" class="nav-link">等宽字体 (Monospace)</a></li>
+                    <li class="nav-item"><a href="#cursive" class="nav-link">手写字体 (Cursive)</a></li>
+                    <li class="nav-item"><a href="#system" class="nav-link">系统字体 (System)</a></li>
+                </ul>
+
+                <div class="nav-category">Google Fonts</div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#gf-serif" class="nav-link">衬线字体</a></li>
+                    <li class="nav-item"><a href="#gf-sans-serif" class="nav-link">无衬线字体</a></li>
+                    <li class="nav-item"><a href="#gf-monospace" class="nav-link">等宽字体</a></li>
+                    <li class="nav-item"><a href="#gf-cursive" class="nav-link">手写字体</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <header>
+                <h1 class="title">字体展示平台</h1>
+                <p class="subtitle">常用字体预览 - Font Showcase</p>
+            </header>
+
+            <main class="fonts-grid">
+            <!-- ========== 衬线字体 Serif ========== -->
+            <section class="font-category" id="serif">
+                <h2 class="category-title">衬线字体 (Serif)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Times New Roman</h3>
+                    <p class="font-sample" style="font-family: 'Times New Roman', serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Times New Roman', serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">传统衬线字体，适合印刷和正式文档</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Georgia</h3>
+                    <p class="font-sample" style="font-family: Georgia, serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: Georgia, serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">现代衬线字体，屏幕显示效果好</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">宋体 (SimSun)</h3>
+                    <p class="font-sample" style="font-family: SimSun, serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: SimSun, serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">中文衬线字体，适合正文阅读</p>
+                </div>
+            </section>
+
+            <!-- ========== 无衬线字体 Sans-serif ========== -->
+            <section class="font-category" id="sans-serif">
+                <h2 class="category-title">无衬线字体 (Sans-serif)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Arial</h3>
+                    <p class="font-sample" style="font-family: Arial, sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: Arial, sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">经典无衬线字体，使用广泛</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Helvetica</h3>
+                    <p class="font-sample" style="font-family: Helvetica, Arial, sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: Helvetica, Arial, sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">设计领域经典字体，现代简洁</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Verdana</h3>
+                    <p class="font-sample" style="font-family: Verdana, sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: Verdana, sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">宽字体设计，小字号下易读性强</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">微软雅黑 (Microsoft YaHei)</h3>
+                    <p class="font-sample" style="font-family: 'Microsoft YaHei', sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Microsoft YaHei', sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">中文无衬线字体，Windows系统默认</p>
+                </div>
+            </section>
+
+            <!-- ========== 等宽字体 Monospace ========== -->
+            <section class="font-category" id="monospace">
+                <h2 class="category-title">等宽字体 (Monospace)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Courier New</h3>
+                    <p class="font-sample" style="font-family: 'Courier New', monospace;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Courier New', monospace;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">经典等宽字体，适合代码显示</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Consolas</h3>
+                    <p class="font-sample" style="font-family: Consolas, 'Courier New', monospace;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: Consolas, 'Courier New', monospace;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">现代等宽字体，编程字体首选</p>
+                </div>
+            </section>
+
+            <!-- ========== 手写字体 Cursive ========== -->
+            <section class="font-category" id="cursive">
+                <h2 class="category-title">手写字体 (Cursive)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Comic Sans MS</h3>
+                    <p class="font-sample" style="font-family: 'Comic Sans MS', cursive;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Comic Sans MS', cursive;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">休闲手写风格，适合非正式场合</p>
+                </div>
+            </section>
+
+            <!-- ========== 系统字体 System ========== -->
+            <section class="font-category" id="system">
+                <h2 class="category-title">系统字体 (System)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">System UI</h3>
+                    <p class="font-sample" style="font-family: system-ui, -apple-system, sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: system-ui, -apple-system, sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">系统默认UI字体，自动适配操作系统</p>
+                </div>
+            </section>
+
+            <!-- ========== Google Fonts - 衬线字体 ========== -->
+            <section class="font-category" id="gf-serif">
+                <h2 class="category-title">Google Fonts - 衬线字体 (Serif)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Uchen</h3>
+                    <p class="font-sample" style="font-family: 'Uchen', serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Uchen', serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">古典标题、正文</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">DM Serif Display</h3>
+                    <p class="font-sample" style="font-family: 'DM Serif Display', serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'DM Serif Display', serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">高端优雅标题</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Cinzel</h3>
+                    <p class="font-sample" style="font-family: 'Cinzel', serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Cinzel', serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">罗马古典标题</p>
+                </div>
+            </section>
+
+            <!-- ========== Google Fonts - 无衬线字体 ========== -->
+            <section class="font-category" id="gf-sans-serif">
+                <h2 class="category-title">Google Fonts - 无衬线字体 (Sans-serif)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Dosis</h3>
+                    <p class="font-sample" style="font-family: 'Dosis', sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Dosis', sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">标题、UI 文本</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Orbitron</h3>
+                    <p class="font-sample" style="font-family: 'Orbitron', sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Orbitron', sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">科技感标题、HUD</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Bungee</h3>
+                    <p class="font-sample" style="font-family: 'Bungee', sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Bungee', sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">粗体海报标题</p>
+                </div>
+            </section>
+
+            <!-- ========== Google Fonts - 等宽字体 ========== -->
+            <section class="font-category" id="gf-monospace">
+                <h2 class="category-title">Google Fonts - 等宽字体 (Monospace)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Doto</h3>
+                    <p class="font-sample" style="font-family: 'Doto', monospace;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Doto', monospace;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">代码、像素风 UI</p>
+                </div>
+            </section>
+
+            <!-- ========== Google Fonts - 手写字体 ========== -->
+            <section class="font-category" id="gf-cursive">
+                <h2 class="category-title">Google Fonts - 手写字体 (Cursive/Handwriting)</h2>
+
+                <div class="font-card">
+                    <h3 class="font-name">Lobster</h3>
+                    <p class="font-sample" style="font-family: 'Lobster', cursive;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Lobster', cursive;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">Logo、品牌标识</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Caveat</h3>
+                    <p class="font-sample" style="font-family: 'Caveat', cursive;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Caveat', cursive;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">手写引文、签名</p>
+                </div>
+
+                <div class="font-card">
+                    <h3 class="font-name">Satisfy</h3>
+                    <p class="font-sample" style="font-family: 'Satisfy', cursive;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'Satisfy', cursive;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">优雅签名、短文案</p>
+                </div>
+            </section>
+            </main>
+
+            <footer>
+                <p>提示：字体显示效果取决于系统中是否安装了相应字体 | Google Fonts 需要网络连接加载</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- 模态窗口 -->
+    <div class="modal-overlay" id="fontModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-font-name" id="modalFontName"></h2>
+            <p class="modal-font-info" id="modalFontInfo"></p>
+
+            <div class="modal-sample modal-sample-large" id="modalSampleEn"></div>
+            <div class="modal-sample" id="modalSampleZh"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
