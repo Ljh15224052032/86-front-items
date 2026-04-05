@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目18：灯塔光束效果</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 灯塔场景容器 -->
+    <div class="lighthouse-scene">
+        <!-- 背景星星层 -->
+        <div class="stars-container">
+            <div class="star star-1"></div>
+            <div class="star star-2"></div>
+            <div class="star star-3"></div>
+            <div class="star star-4"></div>
+            <div class="star star-5"></div>
+            <div class="star star-6"></div>
+            <div class="star star-7"></div>
+            <div class="star star-8"></div>
+            <div class="star star-9"></div>
+            <div class="star star-10"></div>
+            <div class="star star-11"></div>
+            <div class="star star-12"></div>
+            <div class="star star-13"></div>
+            <div class="star star-14"></div>
+            <div class="star star-15"></div>
+            <div class="star star-16"></div>
+            <div class="star star-17"></div>
+            <div class="star star-18"></div>
+            <div class="star star-19"></div>
+            <div class="star star-20"></div>
+        </div>
+
+        <!-- 主光束（单层光束效果） -->
+        <div class="beam-primary"></div>
+
+        <!-- 光源中心 -->
+        <div class="light-source">
+            <div class="light-core"></div>
+            <div class="light-glow"></div>
+        </div>
+
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <h1>灯塔光束效果</h1>
+            <p class="subtitle">Lighthouse Beacon - Conic Gradient Animation</p>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="speedControl">旋转速度</label>
+                    <input type="range" id="speedControl" min="3" max="20" value="10" step="1">
+                    <span id="speedValue">10s</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

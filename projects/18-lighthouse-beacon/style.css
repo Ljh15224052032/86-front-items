@@ -1,0 +1,225 @@
+/* ==============================
+   项目18：灯塔光束效果
+   Lighthouse Beacon
+   ============================== */
+
+/* ========== 全局样式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    background: #000;
+}
+
+/* ========== 灯塔场景容器 ========== */
+.lighthouse-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 50%, #000 100%);
+    overflow: hidden;
+}
+
+/* ========== 背景星星 ========== */
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle var(--duration, 3s) ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ========== 主光束 ========== */
+.beam-primary {
+    position: absolute;
+
+    /* ========== 🔧 发光中心位置 - 调整这里 ========== */
+    /* 当前：右上角 (20%, 80%) */
+    /* 垂直位置：top: 0%(顶部) ~ 100%(底部) */
+    /* 水平位置：left: 0%(左侧) ~ 100%(右侧) */
+    top: 20%;
+    left: 120%;
+    /* =========================================== */
+
+    width: 250vmax; /* 宽度 */
+    height: 250vmax; /* 高度 */
+    transform: translate(-50%, -50%);
+
+    background: conic-gradient(
+        from 180deg,  /* 🔧 起始角度180度，光束朝向左上方 */
+
+        transparent 0deg,
+        transparent 30deg,
+
+        /* ========== 🔧 光的强度 - 调整rgba的第4个值 ========== */
+        /* 格式：rgba(红, 绿, 蓝, 透明度) */
+        /* 透明度范围：0(完全透明) ~ 1(完全不透明) */
+        /* 建议：0.05(很弱) ~ 0.8(很强)，不要超过0.8 */
+
+        rgba(255, 230, 150, 0.1) 180deg,     /* 边缘淡光 - 已减弱 */
+        rgba(255, 240, 180, 0.2) 195deg,     /* 中等亮度 - 已减弱 */
+        rgba(255, 250, 200, 0.3) 210deg,     /* 核心亮光 - 已减弱 */
+        rgba(255, 240, 180, 0.2) 225deg,     /* 中等亮度 - 已减弱 */
+        rgba(255, 230, 150, 0.1) 240deg,     /* 边缘淡光 - 已减弱 */
+
+        /* ==================================================== */
+
+        transparent 270deg,
+        transparent 360deg
+    );
+    /* 🔧 在左边60度范围（150-210度）内摆动 */
+    animation: swing var(--rotation-speed, 10s) ease-in-out infinite alternate;
+    will-change: transform;
+    z-index: 2;
+}
+
+
+
+
+
+/* ========== 动画定义 ========== */
+
+/* 🔧 摆动动画 - 在左边60度范围内摆动（150度到210度） */
+@keyframes swing {
+    from {
+        transform: translate(-50%, -50%) rotate(150deg);  /* 左上 */
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(210deg);  /* 左下 */
+    }
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotate-secondary {
+    from { transform: translate(-50%, -50%) rotate(360deg); }
+    to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+@keyframes rotate-tertiary {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+}
+
+/* ========== 控制面板 ========== */
+.control-panel {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px 30px;
+    color: #fff;
+    text-align: center;
+    z-index: 100;
+    min-width: 300px;
+}
+
+.control-panel h1 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    background: linear-gradient(135deg, #ffeb3b, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    outline: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #ffeb3b;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#speedValue {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.toggle-btn {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, rgba(255, 235, 59, 0.2), rgba(255, 152, 0, 0.2));
+    border: 1px solid rgba(255, 235, 59, 0.3);
+    color: #ffeb3b;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.toggle-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 235, 59, 0.3), rgba(255, 152, 0, 0.3));
+    border-color: rgba(255, 235, 59, 0.5);
+    transform: translateY(-2px);
+}
+
