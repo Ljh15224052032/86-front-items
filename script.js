@@ -425,11 +425,11 @@ function initCategoryFilter() {
                 card.offsetHeight; // 触发重绘
 
                 if (category === 'all' || cardCategory === category) {
-                    card.classList.remove('hidden');
+                    card.classList.remove('category-hidden');
                     card.style.display = 'flex';
                     card.style.animation = 'fadeIn 0.3s ease-in-out';
                 } else {
-                    card.classList.add('hidden');
+                    card.classList.add('category-hidden');
                     card.style.display = 'none';
                 }
             });
@@ -511,12 +511,12 @@ let currentPage = 1;
 
 // 更新分页信息（不重新绑定事件）
 function refreshPagination() {
-    const cards = Array.from(document.querySelectorAll('.project-card:not(.hidden)'));
+    const cards = Array.from(document.querySelectorAll('.project-card:not(.category-hidden)'));
     const totalPages = Math.ceil(cards.length / itemsPerPage);
-    
+
     // 更新总页数
     document.getElementById('totalPages').textContent = totalPages;
-    
+
     // 重置到第一页
     currentPage = 1;
     showPage(1);
@@ -524,7 +524,7 @@ function refreshPagination() {
 
 function initPagination() {
     // 只获取未被筛选隐藏的卡片
-    const cards = Array.from(document.querySelectorAll('.project-card:not(.hidden)'));
+    const cards = Array.from(document.querySelectorAll('.project-card:not(.category-hidden)'));
     const totalPages = Math.ceil(cards.length / itemsPerPage);
 
     // 更新总页数
@@ -550,13 +550,16 @@ function initPagination() {
 }
 
 function showPage(page) {
-    // 只处理未被筛选隐藏的卡片
-    const cards = Array.from(document.querySelectorAll('.project-card:not(.hidden)'));
+    // 获取所有卡片（包括被筛选隐藏的）
+    const allCards = Array.from(document.querySelectorAll('.project-card'));
+    // 获取未被筛选隐藏的卡片
+    const visibleCards = allCards.filter(card => !card.classList.contains('category-hidden'));
+
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    // 隐藏所有卡片
-    cards.forEach((card, index) => {
+    // 隐藏所有未被筛选的卡片
+    visibleCards.forEach((card, index) => {
         if (index >= startIndex && index < endIndex) {
             card.classList.remove('hidden');
             card.style.display = 'flex';
@@ -571,21 +574,34 @@ function showPage(page) {
 
     // 更新按钮状态
     document.getElementById('prevBtn').disabled = (page === 1);
-    document.getElementById('nextBtn').disabled = (page === Math.ceil(cards.length / itemsPerPage));
+    document.getElementById('nextBtn').disabled = (page === Math.ceil(visibleCards.length / itemsPerPage));
 
-    // 更新统计（只统计当前页）
-    updateCurrentPageStats();
+    // 为当前页可见的已完成项目添加查阅按钮
+    addViewButtonsToCurrentPage();
 }
 
 function updateCurrentPageStats() {
-    const visibleCards = Array.from(document.querySelectorAll('.project-card:not(.hidden)'));
+    const visibleCards = Array.from(document.querySelectorAll('.project-card:not(.category-hidden):not(.hidden)'));
     let completed = 0;
 
     visibleCards.forEach(card => {
         const status = card.querySelector('.project-status');
         if (status && status.classList.contains('status-done')) {
             completed++;
+        }
+    });
 
+    // 更新统计显示当前页的完成数
+    document.querySelectorAll('.stat-number')[1].textContent = completed;
+}
+
+// 为当前页可见的已完成项目添加查阅按钮
+function addViewButtonsToCurrentPage() {
+    const visibleCards = Array.from(document.querySelectorAll('.project-card:not(.category-hidden):not(.hidden)'));
+
+    visibleCards.forEach(card => {
+        const status = card.querySelector('.project-status');
+        if (status && status.classList.contains('status-done')) {
             // 为已完成的卡片添加查阅按钮
             if (!card.querySelector('.view-btn')) {
                 const viewBtn = document.createElement('button');
@@ -605,9 +621,6 @@ function updateCurrentPageStats() {
             }
         }
     });
-
-    // 更新统计显示当前页的完成数
-    document.querySelectorAll('.stat-number')[1].textContent = completed;
 }
 
 // ========== 初始化 ==========
