@@ -7,7 +7,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@400;700&family=Cinzel:wght@400;700&family=DM+Serif+Display&family=Dosis:wght@400;700&family=Doto&family=Lobster&family=Orbitron:wght@400;700&family=Satisfy&family=Uchen&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@400;700&family=Cinzel:wght@400;700&family=DM+Serif+Display&family=Dosis:wght@400;700&family=Doto&family=Lobster&family=Orbitron:wght@400;700&family=Satisfy&family=Uchen&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,6 +16,13 @@
         <aside class="sidebar">
             <h1 class="sidebar-title">字体展示平台</h1>
             <p class="sidebar-subtitle">常用字体预览与对比<br>Font Showcase</p>
+
+            <!-- 语言筛选 -->
+            <div class="lang-filter">
+                <button class="lang-btn active" data-lang="all">全部</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">英文</button>
+            </div>
 
             <nav>
                 <div class="nav-category">系统字体</div>
@@ -33,6 +40,7 @@
                     <li class="nav-item"><a href="#gf-sans-serif" class="nav-link">无衬线字体</a></li>
                     <li class="nav-item"><a href="#gf-monospace" class="nav-link">等宽字体</a></li>
                     <li class="nav-item"><a href="#gf-cursive" class="nav-link">手写字体</a></li>
+                    <li class="nav-item"><a href="#gf-display" class="nav-link">艺术字体</a></li>
                 </ul>
             </nav>
         </aside>
@@ -49,7 +57,7 @@
             <section class="font-category" id="serif">
                 <h2 class="category-title">衬线字体 (Serif)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Times New Roman</h3>
                     <p class="font-sample" style="font-family: 'Times New Roman', serif;">
                         Design is about making things clear, not making them beautiful.
@@ -60,7 +68,7 @@
                     <p class="font-info">传统衬线字体，适合印刷和正式文档</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Georgia</h3>
                     <p class="font-sample" style="font-family: Georgia, serif;">
                         Design is about making things clear, not making them beautiful.
@@ -71,7 +79,7 @@
                     <p class="font-info">现代衬线字体，屏幕显示效果好</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="zh">
                     <h3 class="font-name">宋体 (SimSun)</h3>
                     <p class="font-sample" style="font-family: SimSun, serif;">
                         Design is about making things clear, not making them beautiful.
@@ -87,7 +95,7 @@
             <section class="font-category" id="sans-serif">
                 <h2 class="category-title">无衬线字体 (Sans-serif)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Arial</h3>
                     <p class="font-sample" style="font-family: Arial, sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -98,7 +106,7 @@
                     <p class="font-info">经典无衬线字体，使用广泛</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Helvetica</h3>
                     <p class="font-sample" style="font-family: Helvetica, Arial, sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -109,7 +117,7 @@
                     <p class="font-info">设计领域经典字体，现代简洁</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Verdana</h3>
                     <p class="font-sample" style="font-family: Verdana, sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -120,7 +128,7 @@
                     <p class="font-info">宽字体设计，小字号下易读性强</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="zh">
                     <h3 class="font-name">微软雅黑 (Microsoft YaHei)</h3>
                     <p class="font-sample" style="font-family: 'Microsoft YaHei', sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -136,7 +144,7 @@
             <section class="font-category" id="monospace">
                 <h2 class="category-title">等宽字体 (Monospace)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Courier New</h3>
                     <p class="font-sample" style="font-family: 'Courier New', monospace;">
                         Design is about making things clear, not making them beautiful.
@@ -147,7 +155,7 @@
                     <p class="font-info">经典等宽字体，适合代码显示</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Consolas</h3>
                     <p class="font-sample" style="font-family: Consolas, 'Courier New', monospace;">
                         Design is about making things clear, not making them beautiful.
@@ -163,7 +171,7 @@
             <section class="font-category" id="cursive">
                 <h2 class="category-title">手写字体 (Cursive)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Comic Sans MS</h3>
                     <p class="font-sample" style="font-family: 'Comic Sans MS', cursive;">
                         Design is about making things clear, not making them beautiful.
@@ -179,7 +187,7 @@
             <section class="font-category" id="system">
                 <h2 class="category-title">系统字体 (System)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">System UI</h3>
                     <p class="font-sample" style="font-family: system-ui, -apple-system, sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -195,7 +203,7 @@
             <section class="font-category" id="gf-serif">
                 <h2 class="category-title">Google Fonts - 衬线字体 (Serif)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Uchen</h3>
                     <p class="font-sample" style="font-family: 'Uchen', serif;">
                         Design is about making things clear, not making them beautiful.
@@ -206,7 +214,7 @@
                     <p class="font-info">古典标题、正文</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">DM Serif Display</h3>
                     <p class="font-sample" style="font-family: 'DM Serif Display', serif;">
                         Design is about making things clear, not making them beautiful.
@@ -217,7 +225,7 @@
                     <p class="font-info">高端优雅标题</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Cinzel</h3>
                     <p class="font-sample" style="font-family: 'Cinzel', serif;">
                         Design is about making things clear, not making them beautiful.
@@ -233,7 +241,7 @@
             <section class="font-category" id="gf-sans-serif">
                 <h2 class="category-title">Google Fonts - 无衬线字体 (Sans-serif)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Dosis</h3>
                     <p class="font-sample" style="font-family: 'Dosis', sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -244,7 +252,7 @@
                     <p class="font-info">标题、UI 文本</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Orbitron</h3>
                     <p class="font-sample" style="font-family: 'Orbitron', sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -255,7 +263,7 @@
                     <p class="font-info">科技感标题、HUD</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Bungee</h3>
                     <p class="font-sample" style="font-family: 'Bungee', sans-serif;">
                         Design is about making things clear, not making them beautiful.
@@ -271,7 +279,7 @@
             <section class="font-category" id="gf-monospace">
                 <h2 class="category-title">Google Fonts - 等宽字体 (Monospace)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Doto</h3>
                     <p class="font-sample" style="font-family: 'Doto', monospace;">
                         Design is about making things clear, not making them beautiful.
@@ -287,7 +295,7 @@
             <section class="font-category" id="gf-cursive">
                 <h2 class="category-title">Google Fonts - 手写字体 (Cursive/Handwriting)</h2>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Lobster</h3>
                     <p class="font-sample" style="font-family: 'Lobster', cursive;">
                         Design is about making things clear, not making them beautiful.
@@ -298,7 +306,7 @@
                     <p class="font-info">Logo、品牌标识</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Caveat</h3>
                     <p class="font-sample" style="font-family: 'Caveat', cursive;">
                         Design is about making things clear, not making them beautiful.
@@ -309,7 +317,7 @@
                     <p class="font-info">手写引文、签名</p>
                 </div>
 
-                <div class="font-card">
+                <div class="font-card" data-lang="en">
                     <h3 class="font-name">Satisfy</h3>
                     <p class="font-sample" style="font-family: 'Satisfy', cursive;">
                         Design is about making things clear, not making them beautiful.
@@ -318,6 +326,22 @@
                         设计是让事物变得清晰，而不是让它变得漂亮。
                     </p>
                     <p class="font-info">优雅签名、短文案</p>
+                </div>
+            </section>
+
+            <!-- ========== Google Fonts - 艺术字体 ========== -->
+            <section class="font-category" id="gf-display">
+                <h2 class="category-title">Google Fonts - 艺术字体 (Display)</h2>
+
+                <div class="font-card" data-lang="zh">
+                    <h3 class="font-name">ZCOOL QingKe HuangYou (站酷庆科黄油体)</h3>
+                    <p class="font-sample" style="font-family: 'ZCOOL QingKe HuangYou', sans-serif;">
+                        Design is about making things clear, not making them beautiful.
+                    </p>
+                    <p class="font-sample" style="font-family: 'ZCOOL QingKe HuangYou', sans-serif;">
+                        设计是让事物变得清晰，而不是让它变得漂亮。
+                    </p>
+                    <p class="font-info">中文艺术字体，圆润可爱风格，适合标题和海报</p>
                 </div>
             </section>
             </main>

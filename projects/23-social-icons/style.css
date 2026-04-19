@@ -1,0 +1,243 @@
+/* ==============================
+   项目23：社交图标动画
+   Social Icons Animation
+   ============================== */
+
+/* ========== 全局样式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* ========== 图标容器 ========== */
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========== 图标按钮 ========== */
+.wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ========== B站链接样式 ========== */
+.wrapper .icon .icon-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.wrapper .icon .icon-link .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    visibility: hidden;
+    font-family: 'Lobster', cursive;
+}
+
+/* ========== Tooltip提示框 ========== */
+.wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    visibility: hidden;
+    font-family: 'Lobster', cursive;
+}
+
+/* Tooltip小三角箭头 */
+.wrapper .tooltip::before,
+.wrapper .icon-link .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 悬停时显示Tooltip */
+.wrapper .icon:hover .tooltip,
+.wrapper .icon:hover .icon-link .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* ========== 图标样式 ========== */
+.wrapper .icon i,
+.wrapper .icon .icon-svg {
+    font-size: 24px;
+    color: #333;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* B站SVG特殊处理 */
+.wrapper .icon .icon-svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* B站图标默认颜色为黑色 */
+.wrapper .bilibili .icon-svg path {
+    fill: #333333;
+}
+
+/* ========== 品牌颜色 ========== */
+
+/* QQ - 浅蓝色 */
+.wrapper .qq:hover,
+.wrapper .qq:hover .tooltip,
+.wrapper .qq:hover .tooltip::before {
+    background: #12B7F5;
+    color: #fff;
+}
+
+/* 微信 - 绿色 */
+.wrapper .wechat:hover,
+.wrapper .wechat:hover .tooltip,
+.wrapper .wechat:hover .tooltip::before {
+    background: #07C160;
+    color: #fff;
+}
+
+/* B站 - 粉色 */
+.wrapper .bilibili:hover,
+.wrapper .bilibili:hover .icon-link .tooltip,
+.wrapper .bilibili:hover .icon-link .tooltip::before {
+    background: #FB7299;
+    color: #fff;
+}
+
+/* 电话 - 灰蓝色 */
+.wrapper .phone:hover,
+.wrapper .phone:hover .tooltip,
+.wrapper .phone:hover .tooltip::before {
+    background: #64748B;
+    color: #fff;
+}
+
+/* GitHub - 深灰色 */
+.wrapper .github:hover,
+.wrapper .github:hover .icon-link .tooltip,
+.wrapper .github:hover .icon-link .tooltip::before {
+    background: #333333;
+    color: #fff;
+}
+
+/* ========== 图标悬停效果 ========== */
+.wrapper .icon:hover {
+    transform: translateY(-5px);
+}
+
+.wrapper .icon:hover i,
+.wrapper .icon:hover .icon-svg,
+.wrapper .icon:hover .icon-link .icon-svg {
+    color: #fff;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* SVG悬停时变色 */
+.wrapper .icon:hover .icon-svg path,
+.wrapper .icon:hover .icon-link .icon-svg path {
+    fill: #fff;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+    .wrapper {
+        height: 100px;
+    }
+
+    .wrapper .icon {
+        width: 45px;
+        height: 45px;
+        margin: 8px;
+    }
+
+    .wrapper .icon i,
+    .wrapper .icon .icon-svg {
+        font-size: 20px;
+    }
+
+    .wrapper .tooltip {
+        font-size: 12px;
+        padding: 4px 6px;
+    }
+
+    .wrapper .icon:hover .tooltip {
+        top: -40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        height: 90px;
+    }
+
+    .wrapper .icon {
+        width: 40px;
+        height: 40px;
+        margin: 6px;
+    }
+
+    .wrapper .icon i,
+    .wrapper .icon .icon-svg {
+        font-size: 18px;
+    }
+}

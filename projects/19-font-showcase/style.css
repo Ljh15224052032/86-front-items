@@ -212,6 +212,41 @@ footer {
     font-size: 0.9rem;
 }
 
+/* ========== 语言筛选按钮 ========== */
+.lang-filter {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.lang-btn {
+    flex: 1;
+    padding: 8px 0;
+    border: 1px solid #d0d0d0;
+    background: #fff;
+    color: #333;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    border-color: #000;
+    color: #000;
+}
+
+.lang-btn.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* ========== 分类隐藏 ========== */
+.font-category.hidden {
+    display: none;
+}
+
 /* ========== 响应式设计 ========== */
 @media (max-width: 968px) {
     .container {

@@ -1,6 +1,47 @@
 // ========== 平滑滚动导航 ==========
 document.addEventListener('DOMContentLoaded', function() {
 
+    // ========== 语言筛选功能 ==========
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const fontCategories = document.querySelectorAll('.font-category');
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 切换按钮激活状态
+            langBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const lang = this.dataset.lang;
+
+            fontCategories.forEach(category => {
+                const cards = category.querySelectorAll('.font-card');
+
+                if (lang === 'all') {
+                    // 显示全部
+                    category.classList.remove('hidden');
+                    cards.forEach(card => card.style.display = '');
+                } else {
+                    // 检查该分类下是否有匹配的卡片
+                    let hasMatch = false;
+                    cards.forEach(card => {
+                        if (card.dataset.lang === lang) {
+                            card.style.display = '';
+                            hasMatch = true;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    // 如果分类下没有匹配的卡片，隐藏整个分类
+                    if (hasMatch) {
+                        category.classList.remove('hidden');
+                    } else {
+                        category.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+
     // 获取所有导航链接
     const navLinks = document.querySelectorAll('.nav-link');
 

@@ -20,6 +20,7 @@
 - **DOM层级控制**：菜单打开时按钮移到body子元素，确保显示在最上层
 - **菜单项依次出现**：5个菜单项逐个淡入
 - **圆环光晕**：中心区域淡黄色光晕效果
+- **字体样式**：使用 Comic Sans MS 字体，营造活泼友好的视觉效果
 
 ### 3. 菜单项
 - 首页
@@ -104,9 +105,18 @@
 .menu-glow {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, 
-        rgba(255, 235, 153, 0.3) 0%, 
+    background: radial-gradient(circle,
+        rgba(255, 235, 153, 0.3) 0%,
         rgba(255, 235, 153, 0) 70%);
+}
+```
+
+#### 菜单链接字体样式
+```css
+.menu-link {
+    font-size: 2.2rem;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-weight: 700;
 }
 ```
 
@@ -178,6 +188,14 @@ function closeMenu() {
 }
 ```
 
+### 修改菜单字体
+```css
+.menu-link {
+    font-size: 2.2rem;  /* 调整字体大小 */
+    font-family: 'Your Font', sans-serif;  /* 修改字体 */
+}
+```
+
 ## 浏览器兼容性
 
 - ✅ Chrome/Edge
@@ -241,6 +259,7 @@ function closeMenu() {
 6. **Font Awesome**：使用第三方图标库
 7. **事件处理**：点击、键盘事件
 8. **用户体验**：禁止背景滚动、多种关闭方式
+9. **字体选择**：Comic Sans MS 营造活泼友好的视觉风格
 
 ## 项目状态
 
